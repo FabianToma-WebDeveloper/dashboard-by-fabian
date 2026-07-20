@@ -57,3 +57,17 @@ function logout(){
     window.location.href = "index.html";
 
 }
+
+function showSection(section){
+
+    const sections = document.querySelectorAll(".content-section");
+
+    sections.forEach(function(item){
+
+        item.style.display = "none";
+
+    });
+
+    document.getElementById(section).style.display = "block";
+
+}
