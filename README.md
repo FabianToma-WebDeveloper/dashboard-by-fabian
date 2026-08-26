@@ -15,5 +15,3 @@ O pagină de autentificare cu design dark/glassmorphism, animații CSS și efect
 Pentru acces este necesară folosirea unor keywords definite în aplicație.
 user - > rosa | password -> nera
 
-## Development
-Acest proiect a fost realizat cu ajutorul unor instrumente de inteligență artificială pentru brainstorming, îmbunătățirea codului și optimizarea designului UI.
