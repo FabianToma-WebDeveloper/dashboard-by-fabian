@@ -1,3 +1,11 @@
+*{
+    box-sizing:border-box;
+}
+
+html{
+    overflow-x:hidden;
+}
+
 /* =====================
    DASHBOARD GENERAL
 ===================== */
@@ -468,4 +476,123 @@ PANEL
 
     transform:scale(1.05);
 
+}
+
+.leader-btn {
+
+    padding: 12px 25px;
+    background: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: .3s;
+}
+
+.leader-btn:hover {
+    background: #c40024;
+    transform: scale(1.05);
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+
+@media (max-width: 900px) {
+    main {
+        padding: 28px 22px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    main {
+        padding: 22px 16px 32px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .topbar h1 {
+        font-size: 28px;
+        line-height: 1.15;
+    }
+
+    .topbar p {
+        margin: 8px 0 0;
+    }
+
+    .top-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .avatar {
+        width: 50px;
+        height: 50px;
+        flex: 0 0 50px;
+    }
+
+    .logout-btn {
+        min-height: 46px;
+        padding: 10px 18px;
+    }
+
+    .leader-btn {
+        width: 100%;
+        min-height: 46px;
+        margin: 22px 0 0;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 24px;
+    }
+
+    .card,
+    .panel {
+        padding: 20px;
+    }
+
+    .card h2 {
+        font-size: 30px;
+    }
+
+    .dashboard-grid {
+        gap: 14px;
+        margin-top: 18px;
+    }
+
+    .activity p,
+    .territory-box div {
+        padding: 13px;
+    }
+
+    .territory-box div {
+        gap: 12px;
+        align-items: center;
+    }
+}
+
+@media (max-width: 380px) {
+    .top-actions {
+        align-items: stretch;
+    }
+
+    .logout-btn {
+        flex: 1;
+    }
 }

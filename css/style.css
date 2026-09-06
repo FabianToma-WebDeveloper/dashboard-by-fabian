@@ -418,3 +418,42 @@ transform:translateY(0);
     margin-top: 40px;
     padding: 20px;
 }
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+    body {
+        padding: 24px 16px;
+        justify-content: center;
+    }
+
+    .brand-title {
+        font-size: clamp(30px, 10vw, 42px);
+        letter-spacing: 4px;
+        margin-bottom: 18px;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 420px;
+        padding: 28px 20px;
+        border-radius: 16px;
+    }
+
+    input,
+    button {
+        min-height: 48px;
+        font-size: 16px;
+    }
+
+    button:hover {
+        transform: none;
+    }
+
+    .footer {
+        margin-top: 24px;
+        padding: 12px;
+    }
+}
