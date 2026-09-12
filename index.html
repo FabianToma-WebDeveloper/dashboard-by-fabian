@@ -19,101 +19,102 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </head>
 
 <body>
 
     <div class="app">
 
-        <!-- =========================
-             SIDEBAR
-        ========================== -->
         <aside class="sidebar" id="sidebar">
 
-            <!-- Brand -->
-            <div class="sidebar__brand">
-                <div class="sidebar__logo">
-                    <i class="fa-solid fa-chart-simple"></i>
-                </div>
+    <div class="sidebar__brand">
 
-                <div class="sidebar__brand-text">
-                    <h1>E-Commerce</h1>
-                    <span>Analytics Dashboard</span>
-                 </div>
+        <div class="sidebar__logo">
+            <i class="fa-solid fa-chart-simple"></i>
+        </div>
 
-            <!-- Navigație -->
-            <nav class="sidebar__nav">
+        <div class="sidebar__brand-text">
+            <h1>E-Commerce</h1>
+            <span>Analytics Dashboard</span>
+        </div>
 
-                <span class="sidebar__label">MENIU</span>
+    </div>
 
-                <a href="./index.html" class="sidebar__link active">
-                    <i class="fa-solid fa-house"></i>
-                    <span>Prezentare generală</span>
-                </a>
+    <nav class="sidebar__nav">
 
-                <a href="#" class="sidebar__link">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    <span>Comenzi</span>
-                </a>
+        <span class="sidebar__label">MENIU</span>
 
-                <a href="#" class="sidebar__link">
-                    <i class="fa-solid fa-users"></i>
-                    <span>Clienți</span>
-                </a>
+        <a href="./index.html" class="sidebar__link active">
+            <i class="fa-solid fa-house"></i>
+            <span>Prezentare generală</span>
+        </a>
 
-                <a href="#" class="sidebar__link">
-                    <i class="fa-solid fa-box"></i>
-                    <span>Produse</span>
-                </a>
+        <a href="#" class="sidebar__link">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span>Comenzi</span>
+        </a>
 
-                <a href="#" class="sidebar__link">
-                    <i class="fa-solid fa-ranking-star"></i>
-                    <span>Echipă</span>
-                </a>
+        <a href="#" class="sidebar__link">
+            <i class="fa-solid fa-users"></i>
+            <span>Clienți</span>
+        </a>
 
-                <span class="sidebar__label sidebar__label--secondary">
-                    ANALIZĂ
-                </span>
+        <a href="#" class="sidebar__link">
+            <i class="fa-solid fa-box"></i>
+            <span>Produse</span>
+        </a>
 
-                <a href="#" class="sidebar__link">
-                    <i class="fa-solid fa-chart-pie"></i>
-                    <span>Rapoarte</span>
-                </a>
+        <a href="#" class="sidebar__link">
+            <i class="fa-solid fa-ranking-star"></i>
+            <span>Echipă</span>
+        </a>
 
-                <a href="#" class="sidebar__link">
-                    <i class="fa-solid fa-gear"></i>
-                    <span>Setări</span>
-                </a>
+        <span class="sidebar__label sidebar__label--secondary">
+            ANALIZĂ
+        </span>
 
-            </nav>
+        <a href="#" class="sidebar__link">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Rapoarte</span>
+        </a>
 
-            <!-- Footer Sidebar -->
-            <div class="sidebar__footer">
+        <a href="#" class="sidebar__link">
+            <i class="fa-solid fa-gear"></i>
+            <span>Setări</span>
+        </a>
 
-                <div class="user">
-                    <div class="user__avatar">
-                        FT
-                    </div>
+    </nav>
 
-                    <div class="user__info">
-                        <strong>Fabian Toma</strong>
-                        <span>Administrator</span>
-                    </div>
-                </div>
+    <div class="sidebar__footer">
 
-                <button
-                    class="icon-button"
-                    id="logoutButton"
-                    type="button"
-                    aria-label="Deconectare"
-                >
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                </button>
+        <div class="user">
 
+            <div class="user__avatar">
+                FT
             </div>
 
-        </aside>
+            <div class="user__info">
+                <strong>Fabian Toma</strong>
+                <span>Administrator</span>
+            </div>
 
+        </div>
+
+        <button
+            class="icon-button"
+            id="logoutButton"
+            type="button"
+            aria-label="Deconectare"
+        >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </button>
+
+    </div>
+
+</aside>
         <!-- =========================
              CONȚINUT PRINCIPAL
         ========================== -->

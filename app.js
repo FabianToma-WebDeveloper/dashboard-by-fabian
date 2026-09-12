@@ -48,35 +48,74 @@ const dashboardData = {
     }
 };
 
+const chartData = {
+    7: {
+        revenueLabels: ["Lun", "Mar", "Mie", "Joi", "Vin", "Sâm", "Dum"],
+        revenueValues: [1450, 1720, 1380, 1960, 2240, 1810, 1920],
+        categories: ["Electronice", "Accesorii", "Gaming", "Smart Home"],
+        categoryValues: [42, 28, 18, 12]
+    },
+
+    30: {
+        revenueLabels: ["Săpt. 1", "Săpt. 2", "Săpt. 3", "Săpt. 4"],
+        revenueValues: [10840, 11720, 12360, 13375],
+        categories: ["Electronice", "Accesorii", "Gaming", "Smart Home"],
+        categoryValues: [46, 24, 19, 11]
+    },
+
+    90: {
+        revenueLabels: ["Luna 1", "Luna 2", "Luna 3"],
+        revenueValues: [42100, 45860, 50800],
+        categories: ["Electronice", "Accesorii", "Gaming", "Smart Home"],
+        categoryValues: [44, 26, 20, 10]
+    },
+
+    365: {
+        revenueLabels: [
+            "Ian", "Feb", "Mar", "Apr", "Mai", "Iun",
+            "Iul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ],
+        revenueValues: [
+            38200, 41750, 44600, 46900,
+            48150, 50200, 53300, 49600,
+            52120, 55900, 59600, 63900
+        ],
+        categories: ["Electronice", "Accesorii", "Gaming", "Smart Home"],
+        categoryValues: [48, 23, 18, 11]
+    }
+};
+
+let revenueChartInstance = null;
+let categoryChartInstance = null;
 
 // =========================
-// COMENZI RECENTE
+// COMENZI
 // =========================
 
 const recentOrders = [
     {
-        id: "#PB-1048",
+        id: "#EC-1048",
         customer: "Alex Popescu",
         date: "12 Sep 2026",
         amount: 249,
         status: "Finalizată"
     },
     {
-        id: "#PB-1047",
+        id: "#EC-1047",
         customer: "Maria Ionescu",
         date: "12 Sep 2026",
         amount: 329,
         status: "În procesare"
     },
     {
-        id: "#PB-1046",
+        id: "#EC-1046",
         customer: "Andrei Matei",
         date: "11 Sep 2026",
         amount: 159,
         status: "Finalizată"
     },
     {
-        id: "#PB-1045",
+        id: "#EC-1045",
         customer: "Elena Radu",
         date: "11 Sep 2026",
         amount: 89,
@@ -86,7 +125,7 @@ const recentOrders = [
 
 
 // =========================
-// PRODUSE DE TOP
+// PRODUSE
 // =========================
 
 const topProducts = [
@@ -118,7 +157,7 @@ const topProducts = [
 
 
 // =========================
-// ELEMENTE DIN DOM
+// SELECTĂRI DOM
 // =========================
 
 const totalRevenue = document.querySelector("#totalRevenue");
@@ -138,9 +177,14 @@ const topProductsContainer = document.querySelector("#topProducts");
 const mobileMenuButton = document.querySelector("#mobileMenuButton");
 const sidebar = document.querySelector("#sidebar");
 
+const themeButton = document.querySelector("#themeButton");
+const exportButton = document.querySelector("#exportButton");
+
+const searchInput = document.querySelector(".search input");
+
 
 // =========================
-// FORMATARE MONEDĂ
+// FORMATĂRI
 // =========================
 
 function formatCurrency(value) {
@@ -153,7 +197,7 @@ function formatCurrency(value) {
 
 
 // =========================
-// SCHIMBARE PROCENT
+// SCHIMBĂRI PROCENTUALE
 // =========================
 
 function updateChange(element, value) {
@@ -200,14 +244,16 @@ function updateDashboard(period = 30) {
 
 
 // =========================
-// AFIȘARE COMENZI
+// RANDARE COMENZI
 // =========================
 
-function renderRecentOrders() {
+function renderRecentOrders(orders = recentOrders) {
     if (!recentOrdersContainer) return;
 
-    recentOrdersContainer.innerHTML = recentOrders
+    recentOrdersContainer.innerHTML = orders
         .map(order => {
+            const statusClass = getStatusClass(order.status);
+
             return `
                 <tr>
                     <td>
@@ -223,13 +269,11 @@ function renderRecentOrders() {
                     </td>
 
                     <td>
-                        <strong>
-                            ${formatCurrency(order.amount)}
-                        </strong>
+                        <strong>${formatCurrency(order.amount)}</strong>
                     </td>
 
                     <td>
-                        <span class="order-status">
+                        <span class="order-status ${statusClass}">
                             ${order.status}
                         </span>
                     </td>
@@ -241,7 +285,24 @@ function renderRecentOrders() {
 
 
 // =========================
-// AFIȘARE PRODUSE
+// CLASĂ STATUS
+// =========================
+
+function getStatusClass(status) {
+    if (status === "Finalizată") {
+        return "completed";
+    }
+
+    if (status === "În procesare") {
+        return "processing";
+    }
+
+    return "pending";
+}
+
+
+// =========================
+// RANDARE PRODUSE
 // =========================
 
 function renderTopProducts() {
@@ -287,11 +348,151 @@ periodFilter?.addEventListener("change", event => {
 
 
 // =========================
-// MENIU MOBIL
+// SIDEBAR MOBIL
 // =========================
 
-mobileMenuButton?.addEventListener("click", () => {
+mobileMenuButton?.addEventListener("click", event => {
+    event.stopPropagation();
+
     sidebar?.classList.toggle("open");
+});
+
+document.addEventListener("click", event => {
+    if (!sidebar) return;
+
+    const clickedInsideSidebar = sidebar.contains(event.target);
+    const clickedMenuButton =
+        mobileMenuButton?.contains(event.target);
+
+    if (
+        window.innerWidth <= 768 &&
+        sidebar.classList.contains("open") &&
+        !clickedInsideSidebar &&
+        !clickedMenuButton
+    ) {
+        sidebar.classList.remove("open");
+    }
+});
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+        sidebar?.classList.remove("open");
+    }
+});
+
+
+// =========================
+// DARK MODE
+// =========================
+
+function applyTheme(theme) {
+    document.body.classList.toggle(
+        "dark-theme",
+        theme === "dark"
+    );
+
+    updateThemeIcon(theme);
+}
+
+function updateThemeIcon(theme) {
+    if (!themeButton) return;
+
+    const icon = themeButton.querySelector("i");
+
+    if (!icon) return;
+
+    if (theme === "dark") {
+        icon.className = "fa-regular fa-sun";
+    } else {
+        icon.className = "fa-regular fa-moon";
+    }
+}
+
+function getSavedTheme() {
+    return localStorage.getItem("dashboardTheme") || "light";
+}
+
+themeButton?.addEventListener("click", () => {
+    const isDark =
+        document.body.classList.contains("dark-theme");
+
+    const newTheme = isDark ? "light" : "dark";
+
+    localStorage.setItem("dashboardTheme", newTheme);
+
+    applyTheme(newTheme);
+});
+
+
+// =========================
+// SEARCH
+// =========================
+
+searchInput?.addEventListener("input", event => {
+    const searchValue =
+        event.target.value
+            .toLowerCase()
+            .trim();
+
+    const filteredOrders = recentOrders.filter(order => {
+        return (
+            order.id.toLowerCase().includes(searchValue) ||
+            order.customer.toLowerCase().includes(searchValue) ||
+            order.status.toLowerCase().includes(searchValue)
+        );
+    });
+
+    renderRecentOrders(filteredOrders);
+});
+
+
+// =========================
+// EXPORT
+// =========================
+
+exportButton?.addEventListener("click", () => {
+    const selectedPeriod =
+        Number(periodFilter?.value || 30);
+
+    const data = dashboardData[selectedPeriod];
+
+    const report = `
+E-COMMERCE ANALYTICS DASHBOARD
+
+Perioadă: ${selectedPeriod} zile
+
+Venit total:
+${formatCurrency(data.revenue)}
+
+Comenzi:
+${data.orders}
+
+Clienți:
+${data.customers}
+
+Rată de conversie:
+${data.conversion}%
+    `;
+
+    const blob = new Blob(
+        [report],
+        { type: "text/plain;charset=utf-8" }
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "ecommerce-report.txt";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(url);
 });
 
 
@@ -300,11 +501,19 @@ mobileMenuButton?.addEventListener("click", () => {
 // =========================
 
 function init() {
+    const savedTheme = getSavedTheme();
+
+    applyTheme(savedTheme);
+
     updateDashboard(30);
+
     renderRecentOrders();
+
     renderTopProducts();
 
-    console.log("E-Commerce Analytics Dashboard a fost inițializat.");
+    console.log(
+        "E-Commerce Analytics Dashboard a fost inițializat."
+    );
 }
 
 init();
