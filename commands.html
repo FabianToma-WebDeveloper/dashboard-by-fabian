@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Administrarea comenzilor din E-Commerce Analytics Dashboard."
+    >
+
+    <title>Comenzi | E-Commerce Analytics Dashboard</title>
+
+    <!-- CSS general -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS pagină comenzi -->
+    <link rel="stylesheet" href="commands.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar__brand">
+
+                <div class="sidebar__logo">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </div>
+
+                <div class="sidebar__brand-text">
+                    <h1>E-Commerce</h1>
+                    <span>Analytics Dashboard</span>
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar__nav">
+
+                <span class="sidebar__label">
+                    MENIU
+                </span>
+
+                <a
+                    href="index.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-house"></i>
+                    <span>Prezentare generală</span>
+                </a>
+
+                <a
+                    href="commands.html"
+                    class="sidebar__link active"
+                >
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Comenzi</span>
+                </a>
+
+                <a
+                    href="#"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-users"></i>
+                    <span>Clienți</span>
+                </a>
+
+                <a
+                    href="#"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-box"></i>
+                    <span>Produse</span>
+                </a>
+
+                <a
+                    href="#"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span>Echipă</span>
+                </a>
+
+
+                <span class="sidebar__label sidebar__label--secondary">
+                    ANALIZĂ
+                </span>
+
+                <a
+                    href="#"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Rapoarte</span>
+                </a>
+
+                <a
+                    href="#"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Setări</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar__footer">
+
+                <div class="user">
+
+                    <div class="user__avatar">
+                        FT
+                    </div>
+
+                    <div class="user__info">
+                        <strong>Fabian Toma</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                </div>
+
+                <button
+                    class="icon-button"
+                    id="logoutButton"
+                    type="button"
+                    aria-label="Deconectare"
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <div
+            class="sidebar-overlay"
+            id="sidebarOverlay"
+        ></div>
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+        <main class="main">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div class="topbar__left">
+
+                    <button
+                        class="icon-button mobile-menu-button"
+                        id="mobileMenuButton"
+                        type="button"
+                        aria-label="Deschide meniul"
+                    >
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div class="page-heading">
+
+                        <span class="page-heading__eyebrow">
+                            Management
+                        </span>
+
+                        <h2>Comenzi</h2>
+
+                        <p>
+                            Gestionează și urmărește comenzile magazinului.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar__actions">
+
+                    <button
+                        class="icon-button"
+                        id="themeButton"
+                        type="button"
+                        aria-label="Schimbă tema"
+                    >
+                        <i class="fa-regular fa-moon"></i>
+                    </button>
+
+                    <button
+                        class="icon-button notification-button"
+                        type="button"
+                        aria-label="Notificări"
+                    >
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 CONTENT
+            ========================== -->
+            <div class="content orders-page">
+
+                <!-- PAGE HEADER -->
+                <section class="orders-header">
+
+                    <div>
+                        <h3>Administrare comenzi</h3>
+
+                        <p>
+                            Vezi, filtrează și gestionează comenzile clienților.
+                        </p>
+                    </div>
+
+                    <button
+                        class="button button--primary"
+                        id="exportOrdersButton"
+                        type="button"
+                    >
+                        <i class="fa-solid fa-download"></i>
+                        Exportă
+                    </button>
+
+                </section>
+
+
+                <!-- =========================
+                     KPI
+                ========================== -->
+                <section class="orders-stats">
+
+                    <article class="order-stat">
+
+                        <div class="order-stat__icon">
+                            <i class="fa-solid fa-receipt"></i>
+                        </div>
+
+                        <div>
+                            <span>Total comenzi</span>
+                            <strong id="ordersTotal">0</strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="order-stat">
+
+                        <div class="order-stat__icon">
+                            <i class="fa-solid fa-spinner"></i>
+                        </div>
+
+                        <div>
+                            <span>În procesare</span>
+                            <strong id="ordersProcessing">0</strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="order-stat">
+
+                        <div class="order-stat__icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                        <div>
+                            <span>Finalizate</span>
+                            <strong id="ordersCompleted">0</strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="order-stat">
+
+                        <div class="order-stat__icon">
+                            <i class="fa-solid fa-coins"></i>
+                        </div>
+
+                        <div>
+                            <span>Valoare totală</span>
+                            <strong id="ordersRevenue">0 RON</strong>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =========================
+                     ORDERS CARD
+                ========================== -->
+                <section class="card orders-card">
+
+                    <!-- TOOLBAR -->
+                    <div class="orders-toolbar">
+
+                        <div class="orders-search">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                id="orderSearch"
+                                type="search"
+                                placeholder="Caută comandă sau client..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <div class="orders-filters">
+
+                            <select
+                                id="statusFilter"
+                                class="orders-select"
+                                aria-label="Filtrează după status"
+                            >
+                                <option value="all">
+                                    Toate statusurile
+                                </option>
+
+                                <option value="Finalizată">
+                                    Finalizate
+                                </option>
+
+                                <option value="În procesare">
+                                    În procesare
+                                </option>
+
+                                <option value="În așteptare">
+                                    În așteptare
+                                </option>
+
+                                <option value="Anulată">
+                                    Anulate
+                                </option>
+                            </select>
+
+
+                            <select
+                                id="sortOrders"
+                                class="orders-select"
+                                aria-label="Sortează comenzile"
+                            >
+                                <option value="newest">
+                                    Cele mai noi
+                                </option>
+
+                                <option value="oldest">
+                                    Cele mai vechi
+                                </option>
+
+                                <option value="highest">
+                                    Valoare descrescător
+                                </option>
+
+                                <option value="lowest">
+                                    Valoare crescător
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TABLE -->
+                    <div class="table-wrapper">
+
+                        <table class="orders-management-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Comandă</th>
+                                    <th>Client</th>
+                                    <th>Dată</th>
+                                    <th>Produse</th>
+                                    <th>Valoare</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="ordersTableBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- EMPTY STATE -->
+                    <div
+                        class="orders-empty"
+                        id="ordersEmpty"
+                        hidden
+                    >
+                        <i class="fa-solid fa-box-open"></i>
+
+                        <strong>
+                            Nu am găsit comenzi
+                        </strong>
+
+                        <span>
+                            Încearcă să modifici filtrele sau căutarea.
+                        </span>
+                    </div>
+
+
+                    <!-- PAGINATION -->
+                    <div class="orders-pagination">
+
+                        <span id="paginationInfo">
+                            0 comenzi
+                        </span>
+
+                        <div class="pagination-buttons">
+
+                            <button
+                                class="pagination-button"
+                                id="previousPage"
+                                type="button"
+                                aria-label="Pagina anterioară"
+                            >
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+
+                            <span id="currentPage">
+                                1
+                            </span>
+
+                            <button
+                                class="pagination-button"
+                                id="nextPage"
+                                type="button"
+                                aria-label="Pagina următoare"
+                            >
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL DETALII COMANDĂ
+    ========================== -->
+    <div
+        class="order-modal"
+        id="orderModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="order-modal__backdrop"
+            id="orderModalBackdrop"
+        ></div>
+
+        <div class="order-modal__content">
+
+            <div class="order-modal__header">
+
+                <div>
+                    <span>Detalii comandă</span>
+                    <h3 id="modalOrderId">#EC-0000</h3>
+                </div>
+
+                <button
+                    class="icon-button"
+                    id="closeOrderModal"
+                    type="button"
+                    aria-label="Închide"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <div class="order-modal__body">
+
+                <div class="order-detail">
+                    <span>Client</span>
+                    <strong id="modalCustomer">—</strong>
+                </div>
+
+                <div class="order-detail">
+                    <span>Email</span>
+                    <strong id="modalEmail">—</strong>
+                </div>
+
+                <div class="order-detail">
+                    <span>Dată</span>
+                    <strong id="modalDate">—</strong>
+                </div>
+
+                <div class="order-detail">
+                    <span>Produse</span>
+                    <strong id="modalProducts">—</strong>
+                </div>
+
+                <div class="order-detail">
+                    <span>Status</span>
+                    <strong id="modalStatus">—</strong>
+                </div>
+
+                <div class="order-detail">
+                    <span>Valoare totală</span>
+                    <strong id="modalAmount">—</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="commands.js"></script>
+
+</body>
+</html>
