@@ -48,46 +48,6 @@ const dashboardData = {
     }
 };
 
-const chartData = {
-    7: {
-        revenueLabels: ["Lun", "Mar", "Mie", "Joi", "Vin", "Sâm", "Dum"],
-        revenueValues: [1450, 1720, 1380, 1960, 2240, 1810, 1920],
-        categories: ["Electronice", "Accesorii", "Gaming", "Smart Home"],
-        categoryValues: [42, 28, 18, 12]
-    },
-
-    30: {
-        revenueLabels: ["Săpt. 1", "Săpt. 2", "Săpt. 3", "Săpt. 4"],
-        revenueValues: [10840, 11720, 12360, 13375],
-        categories: ["Electronice", "Accesorii", "Gaming", "Smart Home"],
-        categoryValues: [46, 24, 19, 11]
-    },
-
-    90: {
-        revenueLabels: ["Luna 1", "Luna 2", "Luna 3"],
-        revenueValues: [42100, 45860, 50800],
-        categories: ["Electronice", "Accesorii", "Gaming", "Smart Home"],
-        categoryValues: [44, 26, 20, 10]
-    },
-
-    365: {
-        revenueLabels: [
-            "Ian", "Feb", "Mar", "Apr", "Mai", "Iun",
-            "Iul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        ],
-        revenueValues: [
-            38200, 41750, 44600, 46900,
-            48150, 50200, 53300, 49600,
-            52120, 55900, 59600, 63900
-        ],
-        categories: ["Electronice", "Accesorii", "Gaming", "Smart Home"],
-        categoryValues: [48, 23, 18, 11]
-    }
-};
-
-let revenueChartInstance = null;
-let categoryChartInstance = null;
-
 // =========================
 // COMENZI
 // =========================
