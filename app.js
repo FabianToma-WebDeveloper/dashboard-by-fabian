@@ -375,26 +375,22 @@ window.addEventListener("resize", () => {
 // DARK MODE
 // =========================
 
+const themeButton = document.querySelector("#themeButton");
+
 function applyTheme(theme) {
-    document.body.classList.toggle(
-        "dark-theme",
-        theme === "dark"
-    );
-
-    updateThemeIcon(theme);
-}
-
-function updateThemeIcon(theme) {
-    if (!themeButton) return;
-
-    const icon = themeButton.querySelector("i");
-
-    if (!icon) return;
-
     if (theme === "dark") {
-        icon.className = "fa-regular fa-sun";
+        document.body.classList.add("dark-theme");
     } else {
-        icon.className = "fa-regular fa-moon";
+        document.body.classList.remove("dark-theme");
+    }
+
+    const icon = themeButton?.querySelector("i");
+
+    if (icon) {
+        icon.className =
+            theme === "dark"
+                ? "fa-regular fa-sun"
+                : "fa-regular fa-moon";
     }
 }
 
@@ -403,10 +399,15 @@ function getSavedTheme() {
 }
 
 themeButton?.addEventListener("click", () => {
-    const isDark =
-        document.body.classList.contains("dark-theme");
+    const currentTheme =
+        document.body.classList.contains("dark-theme")
+            ? "dark"
+            : "light";
 
-    const newTheme = isDark ? "light" : "dark";
+    const newTheme =
+        currentTheme === "dark"
+            ? "light"
+            : "dark";
 
     localStorage.setItem("dashboardTheme", newTheme);
 
