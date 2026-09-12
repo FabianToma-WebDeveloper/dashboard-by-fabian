@@ -1,31 +1,552 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rosa Nera</title>
+
+    <meta
+        name="description"
+        content="PulseBoard - Dashboard pentru analiza vânzărilor și performanței unui magazin online."
+    >
+
+    <title>PulseBoard | Dashboard Analytics</title>
+
+    <!-- CSS principal -->
     <link rel="stylesheet" href="./css/style.css">
 
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 </head>
+
 <body>
-    <h1 class="brand-title">Rosa Nera</h1>
 
-<div class="login-box">
+    <div class="app">
 
-    <input id="username" type="text" placeholder="Enter your usename">
-    
-    <input id="password" type="password" placeholder="Enter your password">
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+        <aside class="sidebar" id="sidebar">
 
-    <button onclick="login()">LOG IN</button>
-    
-    <p id="error"></p>
-</div>
+            <!-- Brand -->
+            <div class="sidebar__brand">
+                <div class="sidebar__logo">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </div>
 
+                <div class="sidebar__brand-text">
+                    <h1>PulseBoard</h1>
+                    <span>Analytics</span>
+                </div>
+            </div>
 
-<script src="./main.js"></script>
+            <!-- Navigație -->
+            <nav class="sidebar__nav">
 
-<footer class="footer">
-    © Made by Fabian
-</footer>
+                <span class="sidebar__label">MENIU</span>
+
+                <a href="./index.html" class="sidebar__link active">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Prezentare generală</span>
+                </a>
+
+                <a href="#" class="sidebar__link">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Comenzi</span>
+                </a>
+
+                <a href="#" class="sidebar__link">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Clienți</span>
+                </a>
+
+                <a href="#" class="sidebar__link">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Produse</span>
+                </a>
+
+                <a href="#" class="sidebar__link">
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span>Echipă</span>
+                </a>
+
+                <span class="sidebar__label sidebar__label--secondary">
+                    ANALIZĂ
+                </span>
+
+                <a href="#" class="sidebar__link">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Rapoarte</span>
+                </a>
+
+                <a href="#" class="sidebar__link">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Setări</span>
+                </a>
+
+            </nav>
+
+            <!-- Footer Sidebar -->
+            <div class="sidebar__footer">
+
+                <div class="user">
+                    <div class="user__avatar">
+                        FT
+                    </div>
+
+                    <div class="user__info">
+                        <strong>Fabian Toma</strong>
+                        <span>Administrator</span>
+                    </div>
+                </div>
+
+                <button
+                    class="icon-button"
+                    id="logoutButton"
+                    type="button"
+                    aria-label="Deconectare"
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+        </aside>
+
+        <!-- =========================
+             CONȚINUT PRINCIPAL
+        ========================== -->
+        <main class="main">
+
+            <!-- =========================
+                 TOPBAR
+            ========================== -->
+            <header class="topbar">
+
+                <div class="topbar__left">
+
+                    <button
+                        class="icon-button mobile-menu-button"
+                        id="mobileMenuButton"
+                        type="button"
+                        aria-label="Deschide meniul"
+                    >
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div class="page-heading">
+                        <span class="page-heading__eyebrow">
+                            Analytics
+                        </span>
+
+                        <h2>Prezentare generală</h2>
+
+                        <p>
+                            Urmărește performanța magazinului și activitatea afacerii.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="topbar__actions">
+
+                    <!-- Căutare -->
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="search"
+                            placeholder="Caută..."
+                            aria-label="Caută în dashboard"
+                        >
+                    </div>
+
+                    <!-- Dark Mode -->
+                    <button
+                        class="icon-button"
+                        id="themeButton"
+                        type="button"
+                        aria-label="Schimbă tema"
+                    >
+                        <i class="fa-regular fa-moon"></i>
+                    </button>
+
+                    <!-- Notificări -->
+                    <button
+                        class="icon-button notification-button"
+                        type="button"
+                        aria-label="Notificări"
+                    >
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                </div>
+
+            </header>
+
+            <!-- =========================
+                 CONȚINUT DASHBOARD
+            ========================== -->
+            <div class="content">
+
+                <!-- =========================
+                     HEADER OVERVIEW
+                ========================== -->
+                <section class="overview-header">
+
+                    <div>
+                        <h3>Performanța afacerii</h3>
+
+                        <p>
+                            Vezi cele mai importante date despre magazinul tău.
+                        </p>
+                    </div>
+
+                    <div class="overview-actions">
+
+                        <select
+                            id="periodFilter"
+                            class="period-filter"
+                            aria-label="Selectează perioada"
+                        >
+                            <option value="7">
+                                Ultimele 7 zile
+                            </option>
+
+                            <option value="30" selected>
+                                Ultimele 30 de zile
+                            </option>
+
+                            <option value="90">
+                                Ultimele 90 de zile
+                            </option>
+
+                            <option value="365">
+                                Anul acesta
+                            </option>
+                        </select>
+
+                        <button
+                            class="button button--primary"
+                            id="exportButton"
+                            type="button"
+                        >
+                            <i class="fa-solid fa-download"></i>
+                            Exportă
+                        </button>
+
+                    </div>
+
+                </section>
+
+                <!-- =========================
+                     KPI CARDS
+                ========================== -->
+                <section class="stats-grid">
+
+                    <!-- Venituri -->
+                    <article class="stat-card">
+
+                        <div class="stat-card__header">
+
+                            <div class="stat-card__icon">
+                                <i class="fa-solid fa-dollar-sign"></i>
+                            </div>
+
+                            <span
+                                class="stat-card__change"
+                                id="revenueChange"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+                        <div class="stat-card__body">
+
+                            <span>Venit total</span>
+
+                            <strong id="totalRevenue">
+                                —
+                            </strong>
+
+                            <small>
+                                Comparativ cu perioada anterioară
+                            </small>
+
+                        </div>
+
+                    </article>
+
+                    <!-- Comenzi -->
+                    <article class="stat-card">
+
+                        <div class="stat-card__header">
+
+                            <div class="stat-card__icon">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+
+                            <span
+                                class="stat-card__change"
+                                id="ordersChange"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+                        <div class="stat-card__body">
+
+                            <span>Total comenzi</span>
+
+                            <strong id="totalOrders">
+                                —
+                            </strong>
+
+                            <small>
+                                Comparativ cu perioada anterioară
+                            </small>
+
+                        </div>
+
+                    </article>
+
+                    <!-- Clienți -->
+                    <article class="stat-card">
+
+                        <div class="stat-card__header">
+
+                            <div class="stat-card__icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+
+                            <span
+                                class="stat-card__change"
+                                id="customersChange"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+                        <div class="stat-card__body">
+
+                            <span>Total clienți</span>
+
+                            <strong id="totalCustomers">
+                                —
+                            </strong>
+
+                            <small>
+                                Comparativ cu perioada anterioară
+                            </small>
+
+                        </div>
+
+                    </article>
+
+                    <!-- Conversie -->
+                    <article class="stat-card">
+
+                        <div class="stat-card__header">
+
+                            <div class="stat-card__icon">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                            </div>
+
+                            <span
+                                class="stat-card__change"
+                                id="conversionChange"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+                        <div class="stat-card__body">
+
+                            <span>Rată de conversie</span>
+
+                            <strong id="conversionRate">
+                                —
+                            </strong>
+
+                            <small>
+                                Comparativ cu perioada anterioară
+                            </small>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- =========================
+                     GRAFICE
+                ========================== -->
+                <section class="analytics-grid">
+
+                    <!-- Venituri -->
+                    <article class="card revenue-card">
+
+                        <div class="card__header">
+
+                            <div>
+                                <h3>Evoluția veniturilor</h3>
+                                <p>
+                                    Performanța veniturilor în timp.
+                                </p>
+                            </div>
+
+                            <button
+                                class="icon-button"
+                                type="button"
+                                aria-label="Opțiuni grafic venituri"
+                            >
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+
+                    </article>
+
+                    <!-- Categorii -->
+                    <article class="card categories-card">
+
+                        <div class="card__header">
+
+                            <div>
+                                <h3>Vânzări pe categorii</h3>
+
+                                <p>
+                                    Distribuția veniturilor pe categorii.
+                                </p>
+                            </div>
+
+                            <button
+                                class="icon-button"
+                                type="button"
+                                aria-label="Opțiuni grafic categorii"
+                            >
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </div>
+
+                        <div class="chart-container chart-container--small">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+
+                        <div
+                            class="category-legend"
+                            id="categoryLegend"
+                        >
+                            
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- =========================
+                     SECȚIUNE INFERIOARĂ
+                ========================== -->
+                <section class="dashboard-grid">
+
+                    <!-- Comenzi recente -->
+                    <article class="card recent-orders">
+
+                        <div class="card__header">
+
+                            <div>
+                                <h3>Comenzi recente</h3>
+
+                                <p>
+                                    Cele mai noi tranzacții ale clienților.
+                                </p>
+                            </div>
+
+                            <a href="#" class="text-link">
+                                Vezi toate
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                        <div class="table-wrapper">
+
+                            <table class="orders-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Comandă</th>
+                                        <th>Client</th>
+                                        <th>Dată</th>
+                                        <th>Valoare</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="recentOrders">
+                                    
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                    <!-- Produse de top -->
+                    <article class="card top-products">
+
+                        <div class="card__header">
+
+                            <div>
+                                <h3>Produse de top</h3>
+
+                                <p>
+                                    Produsele cu cele mai bune performanțe.
+                                </p>
+                            </div>
+
+                            <button
+                                class="icon-button"
+                                type="button"
+                                aria-label="Opțiuni produse"
+                            >
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </div>
+
+                        <div
+                            class="product-list"
+                            id="topProducts"
+                        >
+                            
+                        </div>
+
+                    </article>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- JavaScript principal -->
+    <script type="module" src="./js/app.js"></script>
+
 </body>
 </html>
