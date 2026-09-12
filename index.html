@@ -21,7 +21,7 @@
     >
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
 </head>
 
 <body>
@@ -115,6 +115,8 @@
     </div>
 
 </aside>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
         <!-- =========================
              CONȚINUT PRINCIPAL
         ========================== -->
@@ -390,6 +392,66 @@
                 ========================== -->
                 <section class="analytics-grid">
 
+
+                <!-- =========================
+                    OBIECTIV LUNAR
+                ========================= -->
+                <section class="monthly-goal-section">
+
+                    <article class="goal-card">
+
+                        <div class="goal-card__header">
+
+                            <div>
+                                <span class="goal-card__label">
+                                    OBIECTIV LUNAR
+                                </span>
+
+                                <h3>Țintă venituri</h3>
+                            </div>
+
+                            <div class="goal-card__icon">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="goal-card__values">
+
+                            <strong id="monthlyGoalCurrent">
+                                —
+                            </strong>
+
+                            <span>
+                                din 60.000 RON
+                            </span>
+
+                        </div>
+
+                        <div class="goal-progress">
+                            <div
+                                class="goal-progress__bar"
+                                id="monthlyGoalBar"
+                            ></div>
+                        </div>
+
+                        <div class="goal-card__footer">
+
+                            <span id="monthlyGoalPercent">
+                                0%
+                            </span>
+
+                            <span id="monthlyGoalRemaining">
+                                —
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
                     <!-- Venituri -->
                     <article class="card revenue-card">
 
@@ -546,7 +608,7 @@
     </div>
 
     <!-- JavaScript principal -->
-    <script type="module" src="./js/app.js"></script>
+    <script type="module" src="app.js"></script>
 
 </body>
 </html>

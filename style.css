@@ -974,3 +974,138 @@ button {
     border-radius: 50%;
     flex-shrink: 0;
 }
+
+/* =========================
+   MONTHLY GOAL
+========================= */
+
+.monthly-goal-section {
+    margin-top: 20px;
+}
+
+.goal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 24px;
+}
+
+.goal-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.goal-card__label {
+    display: block;
+    margin-bottom: 6px;
+
+    color: var(--text-light);
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.goal-card__header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.goal-card__icon {
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: var(--primary-soft);
+    color: #2563eb;
+
+    font-size: 18px;
+}
+
+.goal-card__values {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+
+    margin-top: 24px;
+}
+
+.goal-card__values strong {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.goal-card__values span {
+    color: var(--text-soft);
+    font-size: 14px;
+}
+
+.goal-progress {
+    width: 100%;
+    height: 10px;
+
+    margin-top: 18px;
+
+    overflow: hidden;
+
+    background: var(--surface-soft);
+    border-radius: 999px;
+}
+
+.goal-progress__bar {
+    width: 0;
+    height: 100%;
+
+    background: #2563eb;
+    border-radius: inherit;
+
+    transition: width 0.6s ease;
+}
+
+.goal-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    margin-top: 12px;
+
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+#monthlyGoalPercent {
+    color: #2563eb;
+    font-weight: 700;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 520px) {
+
+    .goal-card {
+        padding: 20px;
+    }
+
+    .goal-card__values {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .goal-card__values strong {
+        font-size: 24px;
+    }
+
+    .goal-card__footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+}

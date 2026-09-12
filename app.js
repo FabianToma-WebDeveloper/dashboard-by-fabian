@@ -351,35 +351,64 @@ periodFilter?.addEventListener("change", event => {
 // SIDEBAR MOBIL
 // =========================
 
+const sidebarOverlay =
+    document.querySelector("#sidebarOverlay");
+
+const sidebarLinks =
+    document.querySelectorAll(".sidebar__link");
+
+function openSidebar() {
+    if (!sidebar || !sidebarOverlay) return;
+
+    sidebar.classList.add("open");
+    sidebarOverlay.classList.add("active");
+    document.body.classList.add("sidebar-open");
+}
+
+function closeSidebar() {
+    if (!sidebar || !sidebarOverlay) return;
+
+    sidebar.classList.remove("open");
+    sidebarOverlay.classList.remove("active");
+    document.body.classList.remove("sidebar-open");
+}
+
 mobileMenuButton?.addEventListener("click", event => {
     event.stopPropagation();
 
-    sidebar?.classList.toggle("open");
+    if (sidebar?.classList.contains("open")) {
+        closeSidebar();
+    } else {
+        openSidebar();
+    }
 });
 
-document.addEventListener("click", event => {
-    if (!sidebar) return;
+sidebarOverlay?.addEventListener("click", () => {
+    closeSidebar();
+});
 
-    const clickedInsideSidebar = sidebar.contains(event.target);
-    const clickedMenuButton =
-        mobileMenuButton?.contains(event.target);
+sidebarLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+            closeSidebar();
+        }
+    });
+});
 
+document.addEventListener("keydown", event => {
     if (
-        window.innerWidth <= 768 &&
-        sidebar.classList.contains("open") &&
-        !clickedInsideSidebar &&
-        !clickedMenuButton
+        event.key === "Escape" &&
+        sidebar?.classList.contains("open")
     ) {
-        sidebar.classList.remove("open");
+        closeSidebar();
     }
 });
 
 window.addEventListener("resize", () => {
     if (window.innerWidth > 768) {
-        sidebar?.classList.remove("open");
+        closeSidebar();
     }
 });
-
 
 // =========================
 // DARK MODE
@@ -497,6 +526,57 @@ ${data.conversion}%
 
 
 // =========================
+// OBIECTIV LUNAR
+// =========================
+
+function updateMonthlyGoal() {
+    const currentRevenue = dashboardData[30].revenue;
+    const monthlyGoal = 60000;
+
+    const percentage = Math.min(
+        (currentRevenue / monthlyGoal) * 100,
+        100
+    );
+
+    const remaining = Math.max(
+        monthlyGoal - currentRevenue,
+        0
+    );
+
+    const currentElement =
+        document.querySelector("#monthlyGoalCurrent");
+
+    const progressBar =
+        document.querySelector("#monthlyGoalBar");
+
+    const percentageElement =
+        document.querySelector("#monthlyGoalPercent");
+
+    const remainingElement =
+        document.querySelector("#monthlyGoalRemaining");
+
+    if (currentElement) {
+        currentElement.textContent =
+            formatCurrency(currentRevenue);
+    }
+
+    if (progressBar) {
+        progressBar.style.width = `${percentage}%`;
+    }
+
+    if (percentageElement) {
+        percentageElement.textContent =
+            `${Math.round(percentage)}% realizat`;
+    }
+
+    if (remainingElement) {
+        remainingElement.textContent =
+            `${formatCurrency(remaining)} rămași`;
+    }
+}
+
+
+// =========================
 // PORNIRE APLICAȚIE
 // =========================
 
@@ -506,10 +586,13 @@ function init() {
     applyTheme(savedTheme);
 
     updateDashboard(30);
-
     renderRecentOrders();
-
     renderTopProducts();
+
+    createRevenueChart(30);
+    createCategoryChart(30);
+
+    updateMonthlyGoal();
 
     console.log(
         "E-Commerce Analytics Dashboard a fost inițializat."
