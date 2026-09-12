@@ -14,11 +14,16 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
-    color: #0f172a;
-    min-height: 100vh;
-}
 
+    background: var(--bg);
+    color: var(--text);
+
+    min-height: 100vh;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
 a {
     color: inherit;
     text-decoration: none;
@@ -1108,4 +1113,113 @@ button {
         flex-direction: column;
         gap: 5px;
     }
+}
+
+/* =========================
+   DARK THEME
+========================= */
+
+body.dark-theme {
+    --bg: #0b1120;
+
+    --surface: #111827;
+    --surface-soft: #1e293b;
+
+    --text: #f8fafc;
+    --text-soft: #cbd5e1;
+    --text-light: #94a3b8;
+
+    --border: #334155;
+
+    --primary-soft: rgba(37, 99, 235, 0.16);
+
+    --shadow-sm:
+        0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+
+/* MAIN */
+
+body.dark-theme .main {
+    background: var(--bg);
+}
+
+
+/* TOPBAR */
+
+body.dark-theme .topbar {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+
+/* CARDS */
+
+body.dark-theme .card,
+body.dark-theme .stat-card,
+body.dark-theme .goal-card {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+
+/* INPUTS */
+
+body.dark-theme .search,
+body.dark-theme .period-filter {
+    background: var(--surface-soft);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+body.dark-theme .search input {
+    color: var(--text);
+}
+
+body.dark-theme .search input::placeholder {
+    color: var(--text-light);
+}
+
+
+/* ICON BUTTONS */
+
+body.dark-theme .icon-button {
+    background: var(--surface-soft);
+    color: var(--text-soft);
+}
+
+body.dark-theme .icon-button:hover {
+    background: #273449;
+    color: var(--text);
+}
+
+
+/* TABLE */
+
+body.dark-theme .orders-table tbody tr:hover {
+    background: var(--surface-soft);
+}
+
+
+/* NOTIFICATION */
+
+body.dark-theme .notification-dot {
+    border-color: var(--surface);
+}
+
+
+/* SMOOTH TRANSITIONS */
+
+body,
+.topbar,
+.card,
+.stat-card,
+.goal-card,
+.search,
+.period-filter,
+.icon-button {
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
 }
