@@ -375,8 +375,6 @@ window.addEventListener("resize", () => {
 // DARK MODE
 // =========================
 
-const themeButton = document.querySelector("#themeButton");
-
 function applyTheme(theme) {
     if (theme === "dark") {
         document.body.classList.add("dark-theme");
