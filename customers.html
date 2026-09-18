@@ -11,18 +11,14 @@
 
     <meta
         name="description"
-        content="Administrarea comenzilor din E-Commerce Analytics Dashboard."
+        content="Administrarea clienților din E-Commerce Analytics Dashboard."
     >
 
-    <title>Comenzi | E-Commerce Analytics Dashboard</title>
+    <title>Clienți | E-Commerce Analytics Dashboard</title>
 
-    <!-- CSS general -->
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/customers.css">
 
-    <!-- CSS pagină comenzi -->
-    <link rel="stylesheet" href="./css/commands.css">
-
-    <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -51,7 +47,6 @@
 
             </div>
 
-
             <nav class="sidebar__nav">
 
                 <span class="sidebar__label">
@@ -68,17 +63,16 @@
 
                 <a
                     href="commands.html"
-                    class="sidebar__link active"
+                    class="sidebar__link"
                 >
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span>Comenzi</span>
                 </a>
 
                 <a
-                    href="#"
-                    class="sidebar__link"
+                    href="customers.html"
+                    class="sidebar__link active"
                 >
-                   <a href="customers.html" class="sidebar__link">
                     <i class="fa-solid fa-users"></i>
                     <span>Clienți</span>
                 </a>
@@ -98,7 +92,6 @@
                     <i class="fa-solid fa-ranking-star"></i>
                     <span>Echipă</span>
                 </a>
-
 
                 <span class="sidebar__label sidebar__label--secondary">
                     ANALIZĂ
@@ -121,7 +114,6 @@
                 </a>
 
             </nav>
-
 
             <div class="sidebar__footer">
 
@@ -151,7 +143,6 @@
 
         </aside>
 
-
         <div
             class="sidebar-overlay"
             id="sidebarOverlay"
@@ -163,7 +154,6 @@
         ========================== -->
         <main class="main">
 
-            <!-- TOPBAR -->
             <header class="topbar">
 
                 <div class="topbar__left">
@@ -183,16 +173,15 @@
                             Management
                         </span>
 
-                        <h2>Comenzi</h2>
+                        <h2>Clienți</h2>
 
                         <p>
-                            Gestionează și urmărește comenzile magazinului.
+                            Analizează clienții și activitatea acestora.
                         </p>
 
                     </div>
 
                 </div>
-
 
                 <div class="topbar__actions">
 
@@ -222,22 +211,21 @@
             <!-- =========================
                  CONTENT
             ========================== -->
-            <div class="content orders-page">
+            <div class="content customers-page">
 
-                <!-- PAGE HEADER -->
-                <section class="orders-header">
+                <section class="customers-header">
 
                     <div>
-                        <h3>Administrare comenzi</h3>
+                        <h3>Administrare clienți</h3>
 
                         <p>
-                            Vezi, filtrează și gestionează comenzile clienților.
+                            Urmărește activitatea și valoarea clienților magazinului.
                         </p>
                     </div>
 
                     <button
                         class="button button--primary"
-                        id="exportOrdersButton"
+                        id="exportCustomersButton"
                         type="button"
                     >
                         <i class="fa-solid fa-download"></i>
@@ -250,59 +238,56 @@
                 <!-- =========================
                      KPI
                 ========================== -->
-                <section class="orders-stats">
+                <section class="customers-stats">
 
-                    <article class="order-stat">
+                    <article class="customer-stat">
 
-                        <div class="order-stat__icon">
-                            <i class="fa-solid fa-receipt"></i>
+                        <div class="customer-stat__icon">
+                            <i class="fa-solid fa-users"></i>
                         </div>
 
                         <div>
-                            <span>Total comenzi</span>
-                            <strong id="ordersTotal">0</strong>
+                            <span>Total clienți</span>
+                            <strong id="customersTotal">0</strong>
                         </div>
 
                     </article>
 
+                    <article class="customer-stat">
 
-                    <article class="order-stat">
-
-                        <div class="order-stat__icon">
-                            <i class="fa-solid fa-spinner"></i>
+                        <div class="customer-stat__icon">
+                            <i class="fa-solid fa-user-plus"></i>
                         </div>
 
                         <div>
-                            <span>În procesare</span>
-                            <strong id="ordersProcessing">0</strong>
+                            <span>Clienți noi</span>
+                            <strong id="customersNew">0</strong>
                         </div>
 
                     </article>
 
+                    <article class="customer-stat">
 
-                    <article class="order-stat">
-
-                        <div class="order-stat__icon">
-                            <i class="fa-solid fa-circle-check"></i>
+                        <div class="customer-stat__icon">
+                            <i class="fa-solid fa-user-check"></i>
                         </div>
 
                         <div>
-                            <span>Finalizate</span>
-                            <strong id="ordersCompleted">0</strong>
+                            <span>Clienți activi</span>
+                            <strong id="customersActive">0</strong>
                         </div>
 
                     </article>
 
+                    <article class="customer-stat">
 
-                    <article class="order-stat">
-
-                        <div class="order-stat__icon">
-                            <i class="fa-solid fa-coins"></i>
+                        <div class="customer-stat__icon">
+                            <i class="fa-solid fa-wallet"></i>
                         </div>
 
                         <div>
-                            <span>Valoare totală</span>
-                            <strong id="ordersRevenue">0 RON</strong>
+                            <span>Valoare medie</span>
+                            <strong id="averageCustomerValue">0 RON</strong>
                         </div>
 
                     </article>
@@ -311,75 +296,66 @@
 
 
                 <!-- =========================
-                     ORDERS CARD
+                     CUSTOMERS
                 ========================== -->
-                <section class="card orders-card">
+                <section class="card customers-card">
 
-                    <!-- TOOLBAR -->
-                    <div class="orders-toolbar">
+                    <div class="customers-toolbar">
 
-                        <div class="orders-search">
+                        <div class="customers-search">
 
                             <i class="fa-solid fa-magnifying-glass"></i>
 
                             <input
-                                id="orderSearch"
+                                id="customerSearch"
                                 type="search"
-                                placeholder="Caută comandă sau client..."
+                                placeholder="Caută după nume sau email..."
                                 autocomplete="off"
                             >
 
                         </div>
 
-
-                        <div class="orders-filters">
+                        <div class="customers-filters">
 
                             <select
-                                id="statusFilter"
-                                class="orders-select"
-                                aria-label="Filtrează după status"
+                                id="customerStatusFilter"
+                                class="customers-select"
                             >
                                 <option value="all">
-                                    Toate statusurile
+                                    Toți clienții
                                 </option>
 
-                                <option value="Finalizată">
-                                    Finalizate
+                                <option value="Activ">
+                                    Activi
                                 </option>
 
-                                <option value="În procesare">
-                                    În procesare
+                                <option value="Nou">
+                                    Noi
                                 </option>
 
-                                <option value="În așteptare">
-                                    În așteptare
-                                </option>
-
-                                <option value="Anulată">
-                                    Anulate
+                                <option value="Inactiv">
+                                    Inactivi
                                 </option>
                             </select>
 
-
                             <select
-                                id="sortOrders"
-                                class="orders-select"
-                                aria-label="Sortează comenzile"
+                                id="customerSort"
+                                class="customers-select"
                             >
-                                <option value="newest">
-                                    Cele mai noi
+                                <option value="recent">
+                                    Activitate recentă
                                 </option>
 
-                                <option value="oldest">
-                                    Cele mai vechi
+                                <option value="spent-high">
+                                    Total cheltuit ↓
                                 </option>
 
-                                <option value="highest">
-                                    Valoare descrescător
+                                <option value="spent-low">
+                                    Total cheltuit ↑
                                 </option>
 
-                                <option value="lowest">
-                                    Valoare crescător
+                                <option value="orders">
+                                    Cele mai multe comenzi
                                 </option>
                             </select>
 
@@ -388,75 +364,67 @@
                     </div>
 
 
-                    <!-- TABLE -->
                     <div class="table-wrapper">
 
-                        <table class="orders-management-table">
+                        <table class="customers-table">
 
                             <thead>
                                 <tr>
-                                    <th>Comandă</th>
                                     <th>Client</th>
-                                    <th>Dată</th>
-                                    <th>Produse</th>
-                                    <th>Valoare</th>
                                     <th>Status</th>
+                                    <th>Comenzi</th>
+                                    <th>Total cheltuit</th>
+                                    <th>Ultima comandă</th>
                                     <th></th>
                                 </tr>
                             </thead>
 
-                            <tbody id="ordersTableBody"></tbody>
+                            <tbody id="customersTableBody"></tbody>
 
                         </table>
 
                     </div>
 
 
-                    <!-- EMPTY STATE -->
                     <div
-                        class="orders-empty"
-                        id="ordersEmpty"
+                        class="customers-empty"
+                        id="customersEmpty"
                         hidden
                     >
-                        <i class="fa-solid fa-box-open"></i>
+                        <i class="fa-solid fa-user-slash"></i>
 
-                        <strong>
-                            Nu am găsit comenzi
-                        </strong>
+                        <strong>Niciun client găsit</strong>
 
                         <span>
-                            Încearcă să modifici filtrele sau căutarea.
+                            Modifică filtrele sau termenul de căutare.
                         </span>
                     </div>
 
 
-                    <!-- PAGINATION -->
-                    <div class="orders-pagination">
+                    <div class="customers-pagination">
 
-                        <span id="paginationInfo">
-                            0 comenzi
+                        <span id="customersPaginationInfo">
+                            0 clienți
                         </span>
 
                         <div class="pagination-buttons">
 
                             <button
                                 class="pagination-button"
-                                id="previousPage"
+                                id="customersPreviousPage"
                                 type="button"
-                                aria-label="Pagina anterioară"
                             >
                                 <i class="fa-solid fa-chevron-left"></i>
                             </button>
 
-                            <span id="currentPage">
+                            <span id="customersCurrentPage">
                                 1
                             </span>
 
                             <button
                                 class="pagination-button"
-                                id="nextPage"
+                                id="customersNextPage"
                                 type="button"
-                                aria-label="Pagina următoare"
                             >
                                 <i class="fa-solid fa-chevron-right"></i>
                             </button>
@@ -475,33 +443,43 @@
 
 
     <!-- =========================
-         MODAL DETALII COMANDĂ
+         CUSTOMER MODAL
     ========================== -->
     <div
-        class="order-modal"
-        id="orderModal"
+        class="customer-modal"
+        id="customerModal"
         aria-hidden="true"
     >
 
         <div
-            class="order-modal__backdrop"
-            id="orderModalBackdrop"
+            class="customer-modal__backdrop"
+            id="customerModalBackdrop"
         ></div>
 
-        <div class="order-modal__content">
+        <div class="customer-modal__content">
 
-            <div class="order-modal__header">
+            <div class="customer-modal__header">
 
-                <div>
-                    <span>Detalii comandă</span>
-                    <h3 id="modalOrderId">#EC-0000</h3>
+                <div class="modal-customer">
+
+                    <div
+                        class="modal-customer__avatar"
+                        id="modalCustomerAvatar"
+                    >
+                        FT
+                    </div>
+
+                    <div>
+                        <span>Profil client</span>
+                        <h3 id="modalCustomerName">—</h3>
+                    </div>
+
                 </div>
 
                 <button
                     class="icon-button"
-                    id="closeOrderModal"
+                    id="closeCustomerModal"
                     type="button"
-                    aria-label="Închide"
                 >
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -509,36 +487,36 @@
             </div>
 
 
-            <div class="order-modal__body">
+            <div class="customer-modal__body">
 
-                <div class="order-detail">
-                    <span>Client</span>
-                    <strong id="modalCustomer">—</strong>
-                </div>
-
-                <div class="order-detail">
+                <div class="customer-detail">
                     <span>Email</span>
-                    <strong id="modalEmail">—</strong>
+                    <strong id="modalCustomerEmail">—</strong>
                 </div>
 
-                <div class="order-detail">
-                    <span>Dată</span>
-                    <strong id="modalDate">—</strong>
-                </div>
-
-                <div class="order-detail">
-                    <span>Produse</span>
-                    <strong id="modalProducts">—</strong>
-                </div>
-
-                <div class="order-detail">
+                <div class="customer-detail">
                     <span>Status</span>
-                    <strong id="modalStatus">—</strong>
+                    <strong id="modalCustomerStatus">—</strong>
                 </div>
 
-                <div class="order-detail">
-                    <span>Valoare totală</span>
-                    <strong id="modalAmount">—</strong>
+                <div class="customer-detail">
+                    <span>Comenzi</span>
+                    <strong id="modalCustomerOrders">—</strong>
+                </div>
+
+                <div class="customer-detail">
+                    <span>Total cheltuit</span>
+                    <strong id="modalCustomerSpent">—</strong>
+                </div>
+
+                <div class="customer-detail">
+                    <span>Client din</span>
+                    <strong id="modalCustomerSince">—</strong>
+                </div>
+
+                <div class="customer-detail">
+                    <span>Ultima comandă</span>
+                    <strong id="modalCustomerLastOrder">—</strong>
                 </div>
 
             </div>
@@ -548,7 +526,7 @@
     </div>
 
 
-    <script src="./js/commands.js"></script>
+    <script src="./js/customers.js"></script>
 
 </body>
 </html>
