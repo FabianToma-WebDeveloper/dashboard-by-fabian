@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Rapoarte și analiză pentru E-Commerce Analytics Dashboard."
+    >
+
+    <title>Rapoarte | E-Commerce Analytics Dashboard</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Reports CSS -->
+    <link rel="stylesheet" href="./css/reports.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <!-- BRAND -->
+
+            <div class="sidebar__brand">
+
+                <div class="sidebar__logo">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </div>
+
+                <div class="sidebar__brand-text">
+                    <h1>E-Commerce</h1>
+                    <span>Analytics Dashboard</span>
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar__nav">
+
+                <span class="sidebar__label">
+                    MENIU
+                </span>
+
+
+                <a
+                    href="index.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-house"></i>
+                    <span>Prezentare generală</span>
+                </a>
+
+
+                <a
+                    href="commands.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Comenzi</span>
+                </a>
+
+
+                <a
+                    href="customers.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-users"></i>
+                    <span>Clienți</span>
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-box"></i>
+                    <span>Produse</span>
+                </a>
+
+
+                <a
+                    href="team.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span>Echipă</span>
+                </a>
+
+
+                <span
+                    class="
+                        sidebar__label
+                        sidebar__label--secondary
+                    "
+                >
+                    ANALIZĂ
+                </span>
+
+
+                <a
+                    href="reports.html"
+                    class="sidebar__link active"
+                >
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Rapoarte</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Setări</span>
+                </a>
+
+            </nav>
+
+
+            <!-- USER -->
+
+            <div class="sidebar__footer">
+
+                <div class="user">
+
+                    <div class="user__avatar">
+                        FT
+                    </div>
+
+                    <div class="user__info">
+
+                        <strong>
+                            Fabian Toma
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="icon-button"
+                    id="logoutButton"
+                    type="button"
+                    aria-label="Deconectare"
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MOBILE SIDEBAR OVERLAY -->
+
+        <div
+            class="sidebar-overlay"
+            id="sidebarOverlay"
+        ></div>
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+
+        <main class="main">
+
+
+            <!-- =========================
+                 TOPBAR
+            ========================== -->
+
+            <header class="topbar">
+
+                <div class="topbar__left">
+
+                    <!-- MOBILE MENU -->
+
+                    <button
+                        class="icon-button mobile-menu-button"
+                        id="mobileMenuButton"
+                        type="button"
+                        aria-label="Deschide meniul"
+                    >
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+
+                    <!-- HEADING -->
+
+                    <div class="page-heading">
+
+                        <span class="page-heading__eyebrow">
+                            Analytics
+                        </span>
+
+                        <h2>
+                            Rapoarte
+                        </h2>
+
+                        <p>
+                            Analizează performanța magazinului și evoluția vânzărilor.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar__actions">
+
+                    <!-- THEME -->
+
+                    <button
+                        class="icon-button"
+                        id="themeButton"
+                        type="button"
+                        aria-label="Schimbă tema"
+                    >
+                        <i class="fa-regular fa-moon"></i>
+                    </button>
+
+
+                    <!-- NOTIFICATIONS -->
+
+                    <button
+                        class="icon-button notification-button"
+                        type="button"
+                        aria-label="Notificări"
+                    >
+                        <i class="fa-regular fa-bell"></i>
+
+                        <span class="notification-dot"></span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 CONTENT
+            ========================== -->
+
+            <div class="content reports-page">
+
+
+                <!-- =========================
+                     REPORT HEADER
+                ========================== -->
+
+                <section class="reports-header">
+
+                    <div>
+
+                        <h3>
+                            Analiză performanță
+                        </h3>
+
+                        <p>
+                            Urmărește indicatorii principali pentru perioada selectată.
+                        </p>
+
+                    </div>
+
+
+                    <div class="reports-header__actions">
+
+                        <!-- PERIOD -->
+
+                        <select
+                            id="reportPeriod"
+                            class="reports-period"
+                            aria-label="Selectează perioada"
+                        >
+                            <option value="7">
+                                Ultimele 7 zile
+                            </option>
+
+                            <option value="30" selected>
+                                Ultimele 30 zile
+                            </option>
+
+                            <option value="90">
+                                Ultimele 90 zile
+                            </option>
+
+                            <option value="365">
+                                Ultimul an
+                            </option>
+                        </select>
+
+
+                        <!-- EXPORT -->
+
+                        <button
+                            class="button button--primary"
+                            id="exportReportButton"
+                            type="button"
+                        >
+                            <i class="fa-solid fa-download"></i>
+                            Exportă raport
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     KPI CARDS
+                ========================== -->
+
+                <section class="reports-stats">
+
+
+                    <!-- REVENUE -->
+
+                    <article class="report-stat">
+
+                        <div class="report-stat__top">
+
+                            <div class="report-stat__icon">
+                                <i class="fa-solid fa-coins"></i>
+                            </div>
+
+                            <span
+                                class="report-stat__change"
+                                id="reportRevenueChange"
+                            >
+                                +0%
+                            </span>
+
+                        </div>
+
+
+                        <span class="report-stat__label">
+                            Venit total
+                        </span>
+
+                        <strong
+                            class="report-stat__value"
+                            id="reportRevenue"
+                        >
+                            0 RON
+                        </strong>
+
+                    </article>
+
+
+                    <!-- ORDERS -->
+
+                    <article class="report-stat">
+
+                        <div class="report-stat__top">
+
+                            <div class="report-stat__icon">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+
+                            <span
+                                class="report-stat__change"
+                                id="reportOrdersChange"
+                            >
+                                +0%
+                            </span>
+
+                        </div>
+
+
+                        <span class="report-stat__label">
+                            Comenzi
+                        </span>
+
+                        <strong
+                            class="report-stat__value"
+                            id="reportOrders"
+                        >
+                            0
+                        </strong>
+
+                    </article>
+
+
+                    <!-- AVERAGE ORDER -->
+
+                    <article class="report-stat">
+
+                        <div class="report-stat__top">
+
+                            <div class="report-stat__icon">
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+
+                            <span
+                                class="report-stat__change"
+                                id="reportAverageChange"
+                            >
+                                +0%
+                            </span>
+
+                        </div>
+
+
+                        <span class="report-stat__label">
+                            Valoare medie comandă
+                        </span>
+
+                        <strong
+                            class="report-stat__value"
+                            id="reportAverageOrder"
+                        >
+                            0 RON
+                        </strong>
+
+                    </article>
+
+
+                    <!-- REFUND RATE -->
+
+                    <article class="report-stat">
+
+                        <div class="report-stat__top">
+
+                            <div class="report-stat__icon">
+                                <i class="fa-solid fa-arrow-rotate-left"></i>
+                            </div>
+
+                            <span
+                                class="report-stat__change"
+                                id="reportRefundChange"
+                            >
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <span class="report-stat__label">
+                            Rată rambursări
+                        </span>
+
+                        <strong
+                            class="report-stat__value"
+                            id="reportRefundRate"
+                        >
+                            0%
+                        </strong>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =========================
+                     MAIN CHART
+                ========================== -->
+
+                <section class="card report-main-chart">
+
+                    <div class="report-card__header">
+
+                        <div>
+
+                            <h3>
+                                Venituri și comenzi
+                            </h3>
+
+                            <p>
+                                Evoluția performanței în perioada selectată.
+                            </p>
+
+                        </div>
+
+
+                        <div class="chart-legend">
+
+                            <span>
+                                <i class="chart-legend__dot chart-legend__dot--revenue"></i>
+                                Venituri
+                            </span>
+
+                            <span>
+                                <i class="chart-legend__dot chart-legend__dot--orders"></i>
+                                Comenzi
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="report-chart-container report-chart-container--large">
+
+                        <canvas id="revenueOrdersChart"></canvas>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     SECONDARY CHARTS
+                ========================== -->
+
+                <section class="reports-grid">
+
+
+                    <!-- CATEGORY SALES -->
+
+                    <article class="card report-chart-card">
+
+                        <div class="report-card__header">
+
+                            <div>
+
+                                <h3>
+                                    Vânzări pe categorii
+                                </h3>
+
+                                <p>
+                                    Distribuția veniturilor.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="report-chart-container">
+
+                            <canvas id="categorySalesChart"></canvas>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PAYMENT METHODS -->
+
+                    <article class="card report-chart-card">
+
+                        <div class="report-card__header">
+
+                            <div>
+
+                                <h3>
+                                    Metode de plată
+                                </h3>
+
+                                <p>
+                                    Preferințele clienților.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="report-chart-container">
+
+                            <canvas id="paymentMethodsChart"></canvas>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =========================
+                     MONTHLY PERFORMANCE
+                ========================== -->
+
+                <section class="card monthly-performance">
+
+                    <div class="report-card__header">
+
+                        <div>
+
+                            <h3>
+                                Performanță lunară
+                            </h3>
+
+                            <p>
+                                Rezultatele recente ale magazinului.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table class="monthly-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Lună</th>
+                                    <th>Venit</th>
+                                    <th>Comenzi</th>
+                                    <th>Clienți</th>
+                                    <th>Valoare medie</th>
+                                    <th>Creștere</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="monthlyPerformanceBody">
+                                <!-- Rendered with JS -->
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     INSIGHTS
+                ========================== -->
+
+                <section class="reports-insights">
+
+
+                    <article class="report-insight">
+
+                        <div class="report-insight__icon">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Cea mai bună categorie
+                            </span>
+
+                            <strong id="bestCategory">
+                                —
+                            </strong>
+
+                            <small id="bestCategoryInfo">
+                                —
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="report-insight">
+
+                        <div class="report-insight__icon">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Cel mai vândut produs
+                            </span>
+
+                            <strong id="bestProduct">
+                                —
+                            </strong>
+
+                            <small id="bestProductInfo">
+                                —
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="report-insight">
+
+                        <div class="report-insight__icon">
+                            <i class="fa-solid fa-credit-card"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Metoda preferată
+                            </span>
+
+                            <strong id="bestPaymentMethod">
+                                —
+                            </strong>
+
+                            <small id="bestPaymentInfo">
+                                —
+                            </small>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         SCRIPTS
+    ========================== -->
+
+    <script src="./js/reports.js"></script>
+
+    <!-- Global functionality -->
+    <script src="./js/notifications.js"></script>
+    <script src="./js/logout.js"></script>
+
+</body>
+
+</html>
