@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Setările E-Commerce Analytics Dashboard."
+    >
+
+    <title>Setări | E-Commerce Analytics Dashboard</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Settings CSS -->
+    <link rel="stylesheet" href="./css/settings.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <!-- BRAND -->
+
+            <div class="sidebar__brand">
+
+                <div class="sidebar__logo">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </div>
+
+                <div class="sidebar__brand-text">
+
+                    <h1>
+                        E-Commerce
+                    </h1>
+
+                    <span>
+                        Analytics Dashboard
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar__nav">
+
+                <span class="sidebar__label">
+                    MENIU
+                </span>
+
+
+                <a
+                    href="index.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-house"></i>
+                    <span>Prezentare generală</span>
+                </a>
+
+
+                <a
+                    href="commands.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Comenzi</span>
+                </a>
+
+
+                <a
+                    href="customers.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-users"></i>
+                    <span>Clienți</span>
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-box"></i>
+                    <span>Produse</span>
+                </a>
+
+
+                <a
+                    href="team.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span>Echipă</span>
+                </a>
+
+
+                <span
+                    class="
+                        sidebar__label
+                        sidebar__label--secondary
+                    "
+                >
+                    ANALIZĂ
+                </span>
+
+
+                <a
+                    href="reports.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Rapoarte</span>
+                </a>
+
+
+                <a
+                    href="settings.html"
+                    class="sidebar__link active"
+                >
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Setări</span>
+                </a>
+
+            </nav>
+
+
+            <!-- USER -->
+
+            <div class="sidebar__footer">
+
+                <div class="user">
+
+                    <div class="user__avatar">
+                        FT
+                    </div>
+
+
+                    <div class="user__info">
+
+                        <strong>
+                            Fabian Toma
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="icon-button"
+                    id="logoutButton"
+                    type="button"
+                    aria-label="Deconectare"
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================
+             MOBILE OVERLAY
+        ========================== -->
+
+        <div
+            class="sidebar-overlay"
+            id="sidebarOverlay"
+        ></div>
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+
+        <main class="main">
+
+
+            <!-- =========================
+                 TOPBAR
+            ========================== -->
+
+            <header class="topbar">
+
+                <div class="topbar__left">
+
+                    <button
+                        class="icon-button mobile-menu-button"
+                        id="mobileMenuButton"
+                        type="button"
+                        aria-label="Deschide meniul"
+                    >
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+
+                    <div class="page-heading">
+
+                        <span class="page-heading__eyebrow">
+                            Configurare
+                        </span>
+
+                        <h2>
+                            Setări
+                        </h2>
+
+                        <p>
+                            Personalizează dashboard-ul și preferințele magazinului.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar__actions">
+
+                    <!-- THEME -->
+
+                    <button
+                        class="icon-button"
+                        id="themeButton"
+                        type="button"
+                        aria-label="Schimbă tema"
+                    >
+                        <i class="fa-regular fa-moon"></i>
+                    </button>
+
+
+                    <!-- NOTIFICATIONS -->
+
+                    <button
+                        class="icon-button notification-button"
+                        type="button"
+                        aria-label="Notificări"
+                    >
+                        <i class="fa-regular fa-bell"></i>
+
+                        <span class="notification-dot"></span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 CONTENT
+            ========================== -->
+
+            <div class="content settings-page">
+
+
+                <!-- =========================
+                     PAGE HEADER
+                ========================== -->
+
+                <section class="settings-header">
+
+                    <div>
+
+                        <h3>
+                            Preferințe dashboard
+                        </h3>
+
+                        <p>
+                            Modificările sunt salvate local în browser.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-header__actions">
+
+                        <button
+                            class="button settings-reset-button"
+                            id="resetSettingsButton"
+                            type="button"
+                        >
+                            <i class="fa-solid fa-arrow-rotate-left"></i>
+                            Resetează
+                        </button>
+
+
+                        <button
+                            class="button button--primary"
+                            id="saveSettingsButton"
+                            type="button"
+                        >
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            Salvează modificările
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     SETTINGS GRID
+                ========================== -->
+
+                <div class="settings-grid">
+
+
+                    <!-- =====================
+                         PROFILE
+                    ====================== -->
+
+                    <section class="card settings-card">
+
+                        <div class="settings-card__header">
+
+                            <div class="settings-card__icon">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Profil
+                                </h3>
+
+                                <p>
+                                    Informațiile contului de administrator.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="settings-card__body">
+
+                            <div class="settings-profile">
+
+                                <div
+                                    class="settings-profile__avatar"
+                                    id="settingsAvatar"
+                                >
+                                    FT
+                                </div>
+
+
+                                <div>
+
+                                    <strong id="settingsProfileName">
+                                        Fabian Toma
+                                    </strong>
+
+                                    <span>
+                                        Administrator
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="settings-form-grid">
+
+
+                                <!-- NAME -->
+
+                                <div class="settings-field">
+
+                                    <label for="settingsName">
+                                        Nume complet
+                                    </label>
+
+                                    <input
+                                        id="settingsName"
+                                        type="text"
+                                        value="Fabian Toma"
+                                        autocomplete="name"
+                                    >
+
+                                </div>
+
+
+                                <!-- EMAIL -->
+
+                                <div class="settings-field">
+
+                                    <label for="settingsEmail">
+                                        Email
+                                    </label>
+
+                                    <input
+                                        id="settingsEmail"
+                                        type="email"
+                                        value="fabian@ecommerce.ro"
+                                        autocomplete="email"
+                                    >
+
+                                </div>
+
+
+                                <!-- ROLE -->
+
+                                <div class="settings-field">
+
+                                    <label for="settingsRole">
+                                        Rol
+                                    </label>
+
+                                    <input
+                                        id="settingsRole"
+                                        type="text"
+                                        value="Administrator"
+                                        disabled
+                                    >
+
+                                </div>
+
+
+                                <!-- COMPANY -->
+
+                                <div class="settings-field">
+
+                                    <label for="settingsCompany">
+                                        Magazin
+                                    </label>
+
+                                    <input
+                                        id="settingsCompany"
+                                        type="text"
+                                        value="E-Commerce Store"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =====================
+                         APPEARANCE
+                    ====================== -->
+
+                    <section class="card settings-card">
+
+                        <div class="settings-card__header">
+
+                            <div class="settings-card__icon">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Aspect
+                                </h3>
+
+                                <p>
+                                    Personalizează experiența dashboard-ului.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="settings-card__body">
+
+
+                            <!-- THEME SELECT -->
+
+                            <div class="settings-option">
+
+                                <div>
+
+                                    <strong>
+                                        Temă dashboard
+                                    </strong>
+
+                                    <span>
+                                        Alege tema preferată.
+                                    </span>
+
+                                </div>
+
+
+                                <select
+                                    id="settingsTheme"
+                                    class="settings-select"
+                                >
+                                    <option value="light">
+                                        Luminoasă
+                                    </option>
+
+                                    <option value="dark">
+                                        Întunecată
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                            <!-- LANGUAGE -->
+
+                            <div class="settings-option">
+
+                                <div>
+
+                                    <strong>
+                                        Limbă interfață
+                                    </strong>
+
+                                    <span>
+                                        Limba utilizată în dashboard.
+                                    </span>
+
+                                </div>
+
+
+                                <select
+                                    id="settingsLanguage"
+                                    class="settings-select"
+                                >
+                                    <option value="ro">
+                                        Română
+                                    </option>
+
+                                    <option value="en">
+                                        English
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                            <!-- COMPACT MODE -->
+
+                            <div class="settings-option">
+
+                                <div>
+
+                                    <strong>
+                                        Mod compact
+                                    </strong>
+
+                                    <span>
+                                        Reduce spațiile dintre elementele interfeței.
+                                    </span>
+
+                                </div>
+
+
+                                <label class="settings-switch">
+
+                                    <input
+                                        id="compactMode"
+                                        type="checkbox"
+                                    >
+
+                                    <span class="settings-switch__slider"></span>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =====================
+                         NOTIFICATIONS
+                    ====================== -->
+
+                    <section class="card settings-card">
+
+                        <div class="settings-card__header">
+
+                            <div class="settings-card__icon">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Notificări
+                                </h3>
+
+                                <p>
+                                    Controlează alertele afișate în dashboard.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="settings-card__body">
+
+
+                            <!-- ORDERS -->
+
+                            <div class="settings-option">
+
+                                <div>
+
+                                    <strong>
+                                        Comenzi noi
+                                    </strong>
+
+                                    <span>
+                                        Primește notificări pentru comenzile noi.
+                                    </span>
+
+                                </div>
+
+
+                                <label class="settings-switch">
+
+                                    <input
+                                        id="orderNotifications"
+                                        type="checkbox"
+                                        checked
+                                    >
+
+                                    <span class="settings-switch__slider"></span>
+
+                                </label>
+
+                            </div>
+
+
+                            <!-- STOCK -->
+
+                            <div class="settings-option">
+
+                                <div>
+
+                                    <strong>
+                                        Alerte stoc
+                                    </strong>
+
+                                    <span>
+                                        Afișează alerte pentru produsele cu stoc redus.
+                                    </span>
+
+                                </div>
+
+
+                                <label class="settings-switch">
+
+                                    <input
+                                        id="stockNotifications"
+                                        type="checkbox"
+                                        checked
+                                    >
+
+                                    <span class="settings-switch__slider"></span>
+
+                                </label>
+
+                            </div>
+
+
+                            <!-- CUSTOMERS -->
+
+                            <div class="settings-option">
+
+                                <div>
+
+                                    <strong>
+                                        Clienți noi
+                                    </strong>
+
+                                    <span>
+                                        Primește notificări când se înregistrează un client.
+                                    </span>
+
+                                </div>
+
+
+                                <label class="settings-switch">
+
+                                    <input
+                                        id="customerNotifications"
+                                        type="checkbox"
+                                        checked
+                                    >
+
+                                    <span class="settings-switch__slider"></span>
+
+                                </label>
+
+                            </div>
+
+
+                            <!-- EMAIL REPORTS -->
+
+                            <div class="settings-option">
+
+                                <div>
+
+                                    <strong>
+                                        Rapoarte săptămânale
+                                    </strong>
+
+                                    <span>
+                                        Activează rezumatul săptămânal demo.
+                                    </span>
+
+                                </div>
+
+
+                                <label class="settings-switch">
+
+                                    <input
+                                        id="weeklyReports"
+                                        type="checkbox"
+                                    >
+
+                                    <span class="settings-switch__slider"></span>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =====================
+                         STORE SETTINGS
+                    ====================== -->
+
+                    <section class="card settings-card">
+
+                        <div class="settings-card__header">
+
+                            <div class="settings-card__icon">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Magazin
+                                </h3>
+
+                                <p>
+                                    Configurează preferințele comerciale.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="settings-card__body">
+
+                            <div class="settings-form-grid">
+
+
+                                <!-- CURRENCY -->
+
+                                <div class="settings-field">
+
+                                    <label for="settingsCurrency">
+                                        Monedă
+                                    </label>
+
+
+                                    <select
+                                        id="settingsCurrency"
+                                        class="settings-select"
+                                    >
+                                        <option value="RON">
+                                            RON — Leu românesc
+                                        </option>
+
+                                        <option value="EUR">
+                                            EUR — Euro
+                                        </option>
+
+                                        <option value="USD">
+                                            USD — Dolar american
+                                        </option>
+                                    </select>
+
+                                </div>
+
+
+                                <!-- TIMEZONE -->
+
+                                <div class="settings-field">
+
+                                    <label for="settingsTimezone">
+                                        Fus orar
+                                    </label>
+
+
+                                    <select
+                                        id="settingsTimezone"
+                                        class="settings-select"
+                                    >
+                                        <option value="Europe/Bucharest">
+                                            Europe/Bucharest
+                                        </option>
+
+                                        <option value="Europe/London">
+                                            Europe/London
+                                        </option>
+
+                                        <option value="America/New_York">
+                                            America/New_York
+                                        </option>
+                                    </select>
+
+                                </div>
+
+
+                                <!-- LOW STOCK -->
+
+                                <div class="settings-field">
+
+                                    <label for="lowStockThreshold">
+                                        Prag stoc redus
+                                    </label>
+
+                                    <input
+                                        id="lowStockThreshold"
+                                        type="number"
+                                        min="1"
+                                        max="100"
+                                        value="10"
+                                    >
+
+                                </div>
+
+
+                                <!-- ITEMS PER PAGE -->
+
+                                <div class="settings-field">
+
+                                    <label for="itemsPerPage">
+                                        Elemente pe pagină
+                                    </label>
+
+
+                                    <select
+                                        id="itemsPerPage"
+                                        class="settings-select"
+                                    >
+                                        <option value="6">
+                                            6
+                                        </option>
+
+                                        <option value="10">
+                                            10
+                                        </option>
+
+                                        <option value="20">
+                                            20
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- =========================
+                     STORAGE INFO
+                ========================== -->
+
+                <section class="settings-storage">
+
+                    <div class="settings-storage__icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Date demo locale
+                        </strong>
+
+                        <p>
+                            Preferințele sunt salvate în LocalStorage pentru demonstrarea persistenței datelor în browser.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         SAVE TOAST
+    ========================== -->
+
+    <div
+        class="settings-toast"
+        id="settingsToast"
+        role="status"
+        aria-live="polite"
+    >
+
+        <div class="settings-toast__icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+
+        <div>
+
+            <strong>
+                Setări salvate
+            </strong>
+
+            <span>
+                Modificările au fost salvate cu succes.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         RESET MODAL
+    ========================== -->
+
+    <div
+        class="settings-modal"
+        id="resetSettingsModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="settings-modal__backdrop"
+            id="resetSettingsBackdrop"
+        ></div>
+
+
+        <div class="settings-modal__content">
+
+            <div class="settings-modal__icon">
+                <i class="fa-solid fa-arrow-rotate-left"></i>
+            </div>
+
+
+            <h3>
+                Resetezi setările?
+            </h3>
+
+
+            <p>
+                Preferințele dashboard-ului vor reveni la valorile implicite.
+            </p>
+
+
+            <div class="settings-modal__actions">
+
+                <button
+                    class="button"
+                    id="cancelResetSettings"
+                    type="button"
+                >
+                    Anulează
+                </button>
+
+
+                <button
+                    class="button settings-reset-confirm"
+                    id="confirmResetSettings"
+                    type="button"
+                >
+                    Resetează
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SCRIPTS
+    ========================== -->
+
+    <script src="./js/settings.js"></script>
+
+    <!-- Global functionality -->
+    <script src="./js/notifications.js"></script>
+    <script src="./js/logout.js"></script>
+
+</body>
+
+</html>
