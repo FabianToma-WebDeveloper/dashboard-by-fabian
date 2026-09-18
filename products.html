@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Administrarea produselor din E-Commerce Analytics Dashboard."
+    >
+
+    <title>Produse | E-Commerce Analytics Dashboard</title>
+
+    <!-- CSS general -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- CSS pagină produse -->
+    <link rel="stylesheet" href="./css/products.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar__brand">
+
+                <div class="sidebar__logo">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </div>
+
+                <div class="sidebar__brand-text">
+                    <h1>E-Commerce</h1>
+                    <span>Analytics Dashboard</span>
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar__nav">
+
+                <span class="sidebar__label">
+                    MENIU
+                </span>
+
+                <a href="index.html" class="sidebar__link">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Prezentare generală</span>
+                </a>
+
+                <a href="commands.html" class="sidebar__link">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Comenzi</span>
+                </a>
+
+                <a href="customers.html" class="sidebar__link">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Clienți</span>
+                </a>
+
+                <a href="products.html" class="sidebar__link active">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Produse</span>
+                </a>
+
+                <a href="#" class="sidebar__link">
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span>Echipă</span>
+                </a>
+
+
+                <span class="sidebar__label sidebar__label--secondary">
+                    ANALIZĂ
+                </span>
+
+                <a href="#" class="sidebar__link">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Rapoarte</span>
+                </a>
+
+                <a href="#" class="sidebar__link">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Setări</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar__footer">
+
+                <div class="user">
+
+                    <div class="user__avatar">
+                        FT
+                    </div>
+
+                    <div class="user__info">
+                        <strong>Fabian Toma</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                </div>
+
+                <button
+                    class="icon-button"
+                    id="logoutButton"
+                    type="button"
+                    aria-label="Deconectare"
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <div
+            class="sidebar-overlay"
+            id="sidebarOverlay"
+        ></div>
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+        <main class="main">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div class="topbar__left">
+
+                    <button
+                        class="icon-button mobile-menu-button"
+                        id="mobileMenuButton"
+                        type="button"
+                        aria-label="Deschide meniul"
+                    >
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+
+                    <div class="page-heading">
+
+                        <span class="page-heading__eyebrow">
+                            Catalog
+                        </span>
+
+                        <h2>Produse</h2>
+
+                        <p>
+                            Gestionează catalogul, prețurile și stocurile magazinului.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar__actions">
+
+                    <button
+                        class="icon-button"
+                        id="themeButton"
+                        type="button"
+                        aria-label="Schimbă tema"
+                    >
+                        <i class="fa-regular fa-moon"></i>
+                    </button>
+
+                    <button
+                        class="icon-button notification-button"
+                        type="button"
+                        aria-label="Notificări"
+                    >
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 CONTENT
+            ========================== -->
+            <div class="content products-page">
+
+
+                <!-- PAGE HEADER -->
+                <section class="products-header">
+
+                    <div>
+                        <h3>Catalog produse</h3>
+
+                        <p>
+                            Monitorizează produsele, vânzările și disponibilitatea stocurilor.
+                        </p>
+                    </div>
+
+
+                    <button
+                        class="button button--primary"
+                        id="exportProductsButton"
+                        type="button"
+                    >
+                        <i class="fa-solid fa-download"></i>
+                        Exportă
+                    </button>
+
+                </section>
+
+
+                <!-- =========================
+                     KPI
+                ========================== -->
+                <section class="products-stats">
+
+                    <article class="product-stat">
+
+                        <div class="product-stat__icon">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                        </div>
+
+                        <div>
+                            <span>Total produse</span>
+                            <strong id="productsTotal">0</strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="product-stat">
+
+                        <div class="product-stat__icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                        <div>
+                            <span>Produse active</span>
+                            <strong id="productsActive">0</strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="product-stat">
+
+                        <div class="product-stat__icon">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <div>
+                            <span>Stoc redus</span>
+                            <strong id="productsLowStock">0</strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="product-stat">
+
+                        <div class="product-stat__icon">
+                            <i class="fa-solid fa-coins"></i>
+                        </div>
+
+                        <div>
+                            <span>Valoare inventar</span>
+                            <strong id="inventoryValue">0 RON</strong>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =========================
+                     PRODUCTS CARD
+                ========================== -->
+                <section class="card products-card">
+
+
+                    <!-- TOOLBAR -->
+                    <div class="products-toolbar">
+
+                        <div class="products-search">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                id="productSearch"
+                                type="search"
+                                placeholder="Caută produs..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <div class="products-filters">
+
+                            <!-- CATEGORY -->
+                            <select
+                                id="categoryFilter"
+                                class="products-select"
+                                aria-label="Filtrează după categorie"
+                            >
+                                <option value="all">
+                                    Toate categoriile
+                                </option>
+
+                                <option value="Audio">
+                                    Audio
+                                </option>
+
+                                <option value="Wearables">
+                                    Wearables
+                                </option>
+
+                                <option value="Gaming">
+                                    Gaming
+                                </option>
+
+                                <option value="Accesorii">
+                                    Accesorii
+                                </option>
+                            </select>
+
+
+                            <!-- STATUS -->
+                            <select
+                                id="stockFilter"
+                                class="products-select"
+                                aria-label="Filtrează după stoc"
+                            >
+                                <option value="all">
+                                    Toate stocurile
+                                </option>
+
+                                <option value="În stoc">
+                                    În stoc
+                                </option>
+
+                                <option value="Stoc redus">
+                                    Stoc redus
+                                </option>
+
+                                <option value="Stoc epuizat">
+                                    Stoc epuizat
+                                </option>
+                            </select>
+
+
+                            <!-- SORT -->
+                            <select
+                                id="productSort"
+                                class="products-select"
+                                aria-label="Sortează produsele"
+                            >
+                                <option value="sales">
+                                    Cele mai vândute
+                                </option>
+
+                                <option value="price-high">
+                                    Preț descrescător
+                                </option>
+
+                                <option value="price-low">
+                                    Preț crescător
+                                </option>
+
+                                <option value="stock-high">
+                                    Stoc descrescător
+                                </option>
+
+                                <option value="stock-low">
+                                    Stoc crescător
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         TABLE
+                    ========================== -->
+                    <div class="table-wrapper">
+
+                        <table class="products-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Produs</th>
+                                    <th>Categorie</th>
+                                    <th>Preț</th>
+                                    <th>Stoc</th>
+                                    <th>Vânzări</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="productsTableBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- EMPTY STATE -->
+                    <div
+                        class="products-empty"
+                        id="productsEmpty"
+                        hidden
+                    >
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                        <strong>
+                            Nu am găsit produse
+                        </strong>
+
+                        <span>
+                            Modifică filtrele sau termenul de căutare.
+                        </span>
+
+                    </div>
+
+
+                    <!-- =========================
+                         PAGINATION
+                    ========================== -->
+                    <div class="products-pagination">
+
+                        <span id="productsPaginationInfo">
+                            0 produse
+                        </span>
+
+
+                        <div class="pagination-buttons">
+
+                            <button
+                                class="pagination-button"
+                                id="productsPreviousPage"
+                                type="button"
+                                aria-label="Pagina anterioară"
+                            >
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+
+
+                            <span id="productsCurrentPage">
+                                1
+                            </span>
+
+
+                            <button
+                                class="pagination-button"
+                                id="productsNextPage"
+                                type="button"
+                                aria-label="Pagina următoare"
+                            >
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         PRODUCT MODAL
+    ========================== -->
+    <div
+        class="product-modal"
+        id="productModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="product-modal__backdrop"
+            id="productModalBackdrop"
+        ></div>
+
+
+        <div class="product-modal__content">
+
+            <div class="product-modal__header">
+
+                <div class="modal-product">
+
+                    <div
+                        class="modal-product__icon"
+                        id="modalProductIcon"
+                    >
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+
+                    <div>
+                        <span>Detalii produs</span>
+                        <h3 id="modalProductName">—</h3>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="icon-button"
+                    id="closeProductModal"
+                    type="button"
+                    aria-label="Închide"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <div class="product-modal__body">
+
+                <div class="product-detail">
+                    <span>Categorie</span>
+                    <strong id="modalProductCategory">—</strong>
+                </div>
+
+                <div class="product-detail">
+                    <span>Preț</span>
+                    <strong id="modalProductPrice">—</strong>
+                </div>
+
+                <div class="product-detail">
+                    <span>Stoc disponibil</span>
+                    <strong id="modalProductStock">—</strong>
+                </div>
+
+                <div class="product-detail">
+                    <span>Unități vândute</span>
+                    <strong id="modalProductSales">—</strong>
+                </div>
+
+                <div class="product-detail">
+                    <span>Status</span>
+                    <strong id="modalProductStatus">—</strong>
+                </div>
+
+                <div class="product-detail">
+                    <span>Venit generat</span>
+                    <strong id="modalProductRevenue">—</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JS produse -->
+    <script src="./js/products.js"></script>
+
+</body>
+</html>
