@@ -266,28 +266,37 @@ function updateProfilePreview(name) {
         name.trim() ||
         defaultSettings.name;
 
+    const initials =
+        getInitials(safeName);
 
+    // Profil Settings
     settingsProfileName.textContent =
         safeName;
 
-
     settingsAvatar.textContent =
-        getInitials(
-            safeName
+        initials;
+
+    // Profil sidebar
+    const sidebarUserName =
+        document.querySelector(
+            ".sidebar__footer .user__info strong"
         );
-}
 
-
-settingsName.addEventListener(
-    "input",
-    () => {
-
-        updateProfilePreview(
-            settingsName.value
+    const sidebarUserAvatar =
+        document.querySelector(
+            ".sidebar__footer .user__avatar"
         );
+
+    if (sidebarUserName) {
+        sidebarUserName.textContent =
+            safeName;
     }
-);
 
+    if (sidebarUserAvatar) {
+        sidebarUserAvatar.textContent =
+            initials;
+    }
+}
 
 // =========================
 // THEME
