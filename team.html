@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Gestionarea echipei din E-Commerce Analytics Dashboard."
+    >
+
+    <title>Echipă | E-Commerce Analytics Dashboard</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Team CSS -->
+    <link rel="stylesheet" href="./css/team.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <div class="sidebar__brand">
+
+                <div class="sidebar__logo">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </div>
+
+                <div class="sidebar__brand-text">
+                    <h1>E-Commerce</h1>
+                    <span>Analytics Dashboard</span>
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar__nav">
+
+                <span class="sidebar__label">
+                    MENIU
+                </span>
+
+
+                <a
+                    href="index.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-house"></i>
+                    <span>Prezentare generală</span>
+                </a>
+
+
+                <a
+                    href="commands.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Comenzi</span>
+                </a>
+
+
+                <a
+                    href="customers.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-users"></i>
+                    <span>Clienți</span>
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-box"></i>
+                    <span>Produse</span>
+                </a>
+
+
+                <a
+                    href="team.html"
+                    class="sidebar__link active"
+                >
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span>Echipă</span>
+                </a>
+
+
+                <span
+                    class="
+                        sidebar__label
+                        sidebar__label--secondary
+                    "
+                >
+                    ANALIZĂ
+                </span>
+
+
+                <a
+                    href="#"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Rapoarte</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="sidebar__link"
+                >
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Setări</span>
+                </a>
+
+            </nav>
+
+
+            <!-- USER -->
+
+            <div class="sidebar__footer">
+
+                <div class="user">
+
+                    <div class="user__avatar">
+                        FT
+                    </div>
+
+                    <div class="user__info">
+                        <strong>Fabian Toma</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="icon-button"
+                    id="logoutButton"
+                    type="button"
+                    aria-label="Deconectare"
+                >
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MOBILE OVERLAY -->
+
+        <div
+            class="sidebar-overlay"
+            id="sidebarOverlay"
+        ></div>
+
+
+        <!-- =========================
+             MAIN
+        ========================== -->
+
+        <main class="main">
+
+            <!-- =========================
+                 TOPBAR
+            ========================== -->
+
+            <header class="topbar">
+
+                <div class="topbar__left">
+
+                    <button
+                        class="icon-button mobile-menu-button"
+                        id="mobileMenuButton"
+                        type="button"
+                        aria-label="Deschide meniul"
+                    >
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+
+                    <div class="page-heading">
+
+                        <span class="page-heading__eyebrow">
+                            Management
+                        </span>
+
+                        <h2>Echipă</h2>
+
+                        <p>
+                            Gestionează membrii și activitatea echipei.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar__actions">
+
+                    <!-- THEME -->
+
+                    <button
+                        class="icon-button"
+                        id="themeButton"
+                        type="button"
+                        aria-label="Schimbă tema"
+                    >
+                        <i class="fa-regular fa-moon"></i>
+                    </button>
+
+
+                    <!-- NOTIFICATIONS -->
+
+                    <button
+                        class="icon-button notification-button"
+                        type="button"
+                        aria-label="Notificări"
+                    >
+                        <i class="fa-regular fa-bell"></i>
+
+                        <span class="notification-dot"></span>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 CONTENT
+            ========================== -->
+
+            <div class="content team-page">
+
+
+                <!-- =========================
+                     PAGE HEADER
+                ========================== -->
+
+                <section class="team-header">
+
+                    <div>
+
+                        <h3>
+                            Membrii echipei
+                        </h3>
+
+                        <p>
+                            Vezi rolurile, activitatea și performanța echipei.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="button button--primary"
+                        id="exportTeamButton"
+                        type="button"
+                    >
+                        <i class="fa-solid fa-download"></i>
+                        Exportă
+                    </button>
+
+                </section>
+
+
+                <!-- =========================
+                     KPI
+                ========================== -->
+
+                <section class="team-stats">
+
+
+                    <!-- TOTAL -->
+
+                    <article class="team-stat">
+
+                        <div class="team-stat__icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Membri echipă
+                            </span>
+
+                            <strong id="teamTotal">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ONLINE -->
+
+                    <article class="team-stat">
+
+                        <div class="team-stat__icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Online acum
+                            </span>
+
+                            <strong id="teamOnline">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- TASKS -->
+
+                    <article class="team-stat">
+
+                        <div class="team-stat__icon">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Task-uri active
+                            </span>
+
+                            <strong id="teamTasks">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- COMPLETION -->
+
+                    <article class="team-stat">
+
+                        <div class="team-stat__icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Rată finalizare
+                            </span>
+
+                            <strong id="teamCompletion">
+                                0%
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =========================
+                     TOOLBAR
+                ========================== -->
+
+                <section class="card team-toolbar">
+
+                    <!-- SEARCH -->
+
+                    <div class="team-search">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            id="teamSearch"
+                            type="search"
+                            placeholder="Caută membru..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <div class="team-filters">
+
+                        <!-- ROLE -->
+
+                        <select
+                            id="teamRoleFilter"
+                            class="team-select"
+                            aria-label="Filtrează după rol"
+                        >
+
+                            <option value="all">
+                                Toate rolurile
+                            </option>
+
+                            <option value="Administrator">
+                                Administrator
+                            </option>
+
+                            <option value="Frontend Developer">
+                                Frontend Developer
+                            </option>
+
+                            <option value="UI/UX Designer">
+                                UI/UX Designer
+                            </option>
+
+                            <option value="Marketing">
+                                Marketing
+                            </option>
+
+                            <option value="Customer Support">
+                                Customer Support
+                            </option>
+
+                        </select>
+
+
+                        <!-- STATUS -->
+
+                        <select
+                            id="teamStatusFilter"
+                            class="team-select"
+                            aria-label="Filtrează după status"
+                        >
+
+                            <option value="all">
+                                Toate statusurile
+                            </option>
+
+                            <option value="Online">
+                                Online
+                            </option>
+
+                            <option value="Ocupat">
+                                Ocupat
+                            </option>
+
+                            <option value="Offline">
+                                Offline
+                            </option>
+
+                        </select>
+
+
+                        <!-- SORT -->
+
+                        <select
+                            id="teamSort"
+                            class="team-select"
+                            aria-label="Sortează membrii"
+                        >
+
+                            <option value="activity">
+                                Activitate
+                            </option>
+
+                            <option value="tasks-high">
+                                Cele mai multe task-uri
+                            </option>
+
+                            <option value="completion-high">
+                                Rată finalizare
+                            </option>
+
+                            <option value="name">
+                                Nume A-Z
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     TEAM GRID
+                ========================== -->
+
+                <section
+                    class="team-grid"
+                    id="teamGrid"
+                >
+                    <!-- Rendered with JS -->
+                </section>
+
+
+                <!-- =========================
+                     EMPTY STATE
+                ========================== -->
+
+                <div
+                    class="team-empty"
+                    id="teamEmpty"
+                    hidden
+                >
+
+                    <i class="fa-solid fa-user-slash"></i>
+
+                    <strong>
+                        Niciun membru găsit
+                    </strong>
+
+                    <span>
+                        Modifică filtrele sau termenul de căutare.
+                    </span>
+
+                </div>
+
+
+                <!-- =========================
+                     PAGINATION
+                ========================== -->
+
+                <section class="card team-pagination">
+
+                    <span id="teamPaginationInfo">
+                        0 membri
+                    </span>
+
+
+                    <div class="pagination-buttons">
+
+                        <button
+                            class="pagination-button"
+                            id="teamPreviousPage"
+                            type="button"
+                            aria-label="Pagina anterioară"
+                        >
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+
+                        <span id="teamCurrentPage">
+                            1
+                        </span>
+
+
+                        <button
+                            class="pagination-button"
+                            id="teamNextPage"
+                            type="button"
+                            aria-label="Pagina următoare"
+                        >
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         TEAM MEMBER MODAL
+    ========================== -->
+
+    <div
+        class="team-modal"
+        id="teamModal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="team-modal__backdrop"
+            id="teamModalBackdrop"
+        ></div>
+
+
+        <div class="team-modal__content">
+
+            <!-- HEADER -->
+
+            <div class="team-modal__header">
+
+                <div class="team-modal__member">
+
+                    <div
+                        class="team-modal__avatar"
+                        id="modalTeamAvatar"
+                    >
+                        FT
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Detalii membru
+                        </span>
+
+                        <h3 id="modalTeamName">
+                            —
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="icon-button"
+                    id="closeTeamModal"
+                    type="button"
+                    aria-label="Închide"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <!-- BODY -->
+
+            <div class="team-modal__body">
+
+
+                <div class="team-detail">
+
+                    <span>
+                        Rol
+                    </span>
+
+                    <strong id="modalTeamRole">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="team-detail">
+
+                    <span>
+                        Email
+                    </span>
+
+                    <strong id="modalTeamEmail">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="team-detail">
+
+                    <span>
+                        Status
+                    </span>
+
+                    <strong id="modalTeamStatus">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="team-detail">
+
+                    <span>
+                        Task-uri active
+                    </span>
+
+                    <strong id="modalTeamTasks">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="team-detail">
+
+                    <span>
+                        Task-uri finalizate
+                    </span>
+
+                    <strong id="modalTeamCompleted">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="team-detail">
+
+                    <span>
+                        Rată finalizare
+                    </span>
+
+                    <strong id="modalTeamCompletion">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="team-detail">
+
+                    <span>
+                        Membru din
+                    </span>
+
+                    <strong id="modalTeamSince">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="team-detail">
+
+                    <span>
+                        Ultima activitate
+                    </span>
+
+                    <strong id="modalTeamActivity">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SCRIPTS
+    ========================== -->
+
+    <script src="./js/team.js"></script>
+
+    <!-- Global functionality -->
+    <script src="./js/notifications.js"></script>
+    <script src="./js/logout.js"></script>
+
+</body>
+
+</html>
